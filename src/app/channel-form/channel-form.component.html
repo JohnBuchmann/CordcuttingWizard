@@ -1,0 +1,204 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+        <form [hidden]="hideForm" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+          <div class="card">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Channel name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      formControlName="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="image">Logo image</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="logoimage"
+                      placeholder="./../assets/logos/image.png"
+                      formControlName="logoimage">
+                </div>
+
+
+            </div>
+          </div>
+
+
+
+
+
+          <div class="card">
+            <div class="card-body">
+                <h3>Hulu</h3>
+                <div class="form-group">
+                    <label for="status-hulu">Status</label>
+                    <select
+                      class="form-control"
+                      id="status-hulu"
+                      formControlName="status_hulu">
+                        <option>Yes</option>
+                        <option>No</option>
+                    </select>
+                 </div>
+                 <div class="form-group">
+                    <label for="misc-hulu">Misc details</label>
+                    <textarea
+                      class="form-control"
+                      id="misc-hulu"
+                      rows="3"
+                      formControlName="misc_hulu"></textarea>
+                  </div>
+            </div>
+          </div>
+
+
+
+            <div class="card">
+                <div class="card-body">
+                    <h3>Youtube Live</h3>
+                    <div class="form-group">
+                        <label for="status-youtube">Status</label>
+                        <select
+                          class="form-control"
+                            id="status-youtube"
+                            formControlName="status_youtube">
+                              <option>Yes</option>
+                              <option>No</option>
+                        </select>
+                     </div>
+                     <div class="form-group">
+                        <label for="misc-youtube">Misc details</label>
+                        <textarea
+                          class="form-control"
+                          id="misc-youtube"
+                          rows="3"
+                          formControlName="misc_youtube"></textarea>
+                      </div>
+                </div>
+              </div>
+
+
+              <div class="card">
+                  <div class="card-body">
+                      <h3>Sling TV</h3>
+                      <div class="form-group">
+                          <label for="status-sling">Status</label>
+                          <select
+                            class="form-control"
+                            id="status-sling"
+                            formControlName="status_sling">
+                              <option>Yes</option>
+                              <option>No</option>
+                          </select>
+                       </div>
+                       <div class="form-group">
+                          <label for="misc-sling">Misc details</label>
+                          <textarea
+                            class="form-control"
+                            id="misc-sling"
+                            rows="3"
+                            formControlName="misc_sling"></textarea>
+                        </div>
+                  </div>
+                </div>
+
+              <div class="card">
+                  <div class="card-body">
+                      <h3>DirectTV Now</h3>
+                      <div class="form-group">
+                          <label for="status_directtv">Status</label>
+                          <select
+                            class="form-control"
+                            id="status-directtv"
+                            formControlName="status_directtv">
+                              <option>Yes</option>
+                              <option>No</option>
+                          </select>
+                       </div>
+                       <div class="form-group">
+                          <label for="misc-directtv">Misc details</label>
+                          <textarea
+                            class="form-control"
+                            id="misc-directtv"
+                            rows="3"
+                            formControlName="misc_directtv"></textarea>
+                        </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Playstation Vue</h3>
+                        <div class="form-group">
+                            <label for="status-vue">Status</label>
+                            <select
+                              class="form-control"
+                              id="status-vue"
+                              formControlName="status_vue">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                         </div>
+                         <div class="form-group">
+                            <label for="misc-vue">Misc details</label>
+                            <textarea
+                              class="form-control"
+                              id="misc-vue"
+                              rows="3"
+                              formControlName="misc_vue"></textarea>
+                          </div>
+                    </div>
+                  </div>
+
+
+                  <div class="card">
+                      <div class="card-body">
+                          <h3>Fubo</h3>
+                          <div class="form-group">
+                              <label for="status-fubo">Status</label>
+                              <select
+                                class="form-control"
+                                id="status-fubo"
+                                formControlName="status_fubo">
+                                  <option>Yes</option>
+                                  <option>No</option>
+                              </select>
+                           </div>
+                           <div class="form-group">
+                              <label for="misc-vue">Misc details</label>
+                              <textarea
+                                class="form-control"
+                                id="misc-fubo"
+                                rows="3"
+                                formControlName="misc_fubo"></textarea>
+                            </div>
+                      </div>
+                    </div>
+
+                  <button *ngIf="editMode"
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="!myForm.valid">Update</button>
+
+                    <button *ngIf="editMode"
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="deleteChannel()">Delete</button>
+
+                    <button *ngIf="!editMode"
+                    type="submit"
+                    class="btn btn-primary"
+                    [disabled]="!myForm.valid">Add Channel</button>
+
+        </form>
+    </div>
+  </div>
+
+
+</div>

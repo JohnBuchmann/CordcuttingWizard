@@ -1,0 +1,75 @@
+
+        <img class="img-fluid devicelogo" [src]="deviceLogo" alt="">
+        <div class="card-block">
+            <div *ngFor="let item of device">
+                <div class="media">
+
+                    <img class="channellogo mr-2" [src]="item.image" alt="">
+                    <div class="media-body">
+
+                      <div *ngIf="deviceName === 'hulu'">
+                          <p *ngIf="item.devices.hulu.misc">
+                              {{ item.devices.hulu.misc }}
+                          </p>
+                          <p *ngIf="!item.devices.hulu.misc">
+                              Comes standard
+                          </p>
+                      </div>
+
+                      <div *ngIf="deviceName === 'sling'">
+                          <p *ngIf="item.devices.sling.misc">
+                              {{ item.devices.sling.misc }}
+                          </p>
+                          <p *ngIf="!item.devices.sling.misc">
+                              Comes standard
+                          </p>
+                      </div>
+
+                      <div *ngIf="deviceName === 'youtube'">
+                          <p *ngIf="item.devices.youtube.misc">
+                              {{ item.devices.youtube.misc }}
+                          </p>
+                          <p *ngIf="!item.devices.youtube.misc">
+                              Comes standard
+                          </p>
+                      </div>
+
+                      <div *ngIf="deviceName === 'directtv'">
+                          <p *ngIf="item.devices.directtv.misc">
+                              {{ item.devices.directtv.misc }}
+                          </p>
+                          <p *ngIf="!item.devices.directtv.misc">
+                              Comes standard
+                          </p>
+                      </div>
+
+                      <div *ngIf="deviceName === 'vue'">
+                          <p *ngIf="item.devices.vue.misc">
+                              {{ item.devices.vue.misc }}
+                          </p>
+                          <p *ngIf="!item.devices.vue.misc">
+                              Comes standard
+                          </p>
+                      </div>
+
+
+                      <div *ngIf="deviceName === 'fubo'">
+                          <p *ngIf="item.devices.fubo.misc">
+                              {{ item.devices.fubo.misc }}
+                          </p>
+                          <p *ngIf="!item.devices.fubo.misc">
+                              Comes standard
+                          </p>
+                      </div>
+
+
+                    </div>
+                </div>
+              </div>
+        </div>
+
+
+
+
+
+

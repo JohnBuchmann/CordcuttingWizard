@@ -1,0 +1,12 @@
+.navbar {
+  background: #FFFFFF;
+}
+
+.navbar-brand img {
+    height: auto;
+    width: auto;
+}
+
+a {
+  color: #000000;
+}

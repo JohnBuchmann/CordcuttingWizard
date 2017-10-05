@@ -1,0 +1,22 @@
+:host {
+
+
+}
+
+img.channellogo {
+  width: 30px;
+  height: 30px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.card-block {
+  padding-left: 15px;
+  padding-right: 0px;
+}
+
+.devicelogo {
+  padding: 10px;
+}

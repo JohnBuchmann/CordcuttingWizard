@@ -1,0 +1,21 @@
+div.edit {
+  display: inline-block;
+  float: right;
+}
+
+img.channellogo {
+  margin-right: 15px;
+  width: 30px;
+  height: 30px;
+}
+
+.manager .leftcolumn {
+  margin-top: 30px;
+}
+
+.manager .channels {
+  margin-top: 30px;
+}
+
+
+
