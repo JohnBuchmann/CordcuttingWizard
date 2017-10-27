@@ -5,7 +5,7 @@ export class MessageService {
   successOrErrorOccurred = new EventEmitter<Message>();
 
   handleMessage(message: Message) {
-    //const data = new Message(message.title, message.message);
+    // const data = new Message(message.title, message.message);
     this.successOrErrorOccurred.emit(message);
   }
 }

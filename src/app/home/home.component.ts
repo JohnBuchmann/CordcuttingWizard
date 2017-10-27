@@ -3,6 +3,7 @@ import { Channel } from './../models/channel.model';
 import { ChannelsService } from './../services/channels.service';
 import { identifierModuleUrl } from '@angular/compiler';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { EmailService } from './../services/email.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -50,7 +51,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   constructor(
       private channelsService: ChannelsService,
-      public modalService: NgbModal) {
+      public modalService: NgbModal,
+      public emailService: EmailService) {
 
     this.channelsService.downloadChannels();
     this.allChannels = this.channelsService.getAllChannels();
@@ -63,6 +65,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+  }
+
+  onEmail() {
+    this.emailService.sendEmail();
   }
 
   onChannelClick(event, channel: Channel, index) {
