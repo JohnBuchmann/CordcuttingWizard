@@ -2,3 +2,21 @@
 body {
     background: #212121;
 }
+
+
+/* Forms */
+
+form h2 {
+  margin-bottom: 30px;
+}
+
+.card {
+  margin-top: 40px;
+}
+
+.card-body {
+  padding: 30px;
+}
+
+
+

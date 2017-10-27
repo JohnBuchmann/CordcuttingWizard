@@ -26,7 +26,7 @@ import { ModalComponent } from './modal/modal.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
-
+import { ReporterrorComponent } from './reporterror/reporterror.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +39,8 @@ import {ShareButtonsModule} from 'ngx-sharebuttons';
     HomeComponent,
     LoginComponent,
     ModalComponent,
-    FooterComponent
+    FooterComponent,
+    ReporterrorComponent
   ],
   imports: [
     BrowserModule,

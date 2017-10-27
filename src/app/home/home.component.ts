@@ -67,9 +67,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
   }
 
-  onEmail() {
-    this.emailService.sendEmail();
-  }
 
   onChannelClick(event, channel: Channel, index) {
     const isChecked = event.target.checked;

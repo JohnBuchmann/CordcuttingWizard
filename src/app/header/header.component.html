@@ -7,11 +7,19 @@
               <img src="assets/sitelogo.png" width="30" height="30" alt="">
           </a>
           <div class="collapse navbar-collapse" id="navbarText">
+
             <ul class="mr-auto"></ul>
-                <ul class="nav">
+                <ul class="nav nav-pills">
+
+                    <li class="nav-item">
+
+                        <button class="btn btn-primary" [routerLink]="['/reporterror']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report Error</button>
+                      </li>
+
                     <li class="nav-item">
                       <a *ngIf="isLoggedIn" class="nav-link" [routerLink]="['/manager']">Manage Channels</a>
                     </li>
+
                     <li class="nav-item">
                       <a *ngIf="!isLoggedIn" class="nav-link" [routerLink]="['/login']">Login</a>
                     </li>

@@ -1,24 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Rx';
+import { Observable, Subject } from 'rxjs/Rx';
 import { Http, Headers } from '@angular/http';
+import 'rxjs/Rx';
 
 @Injectable()
 export class EmailService {
 
   constructor(private http: Http) {}
 
-  sendEmail() {
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const body = {
-      'firstName': 'John',
-      'lastName': 'Buchmann'
-    };
-    this.http.post('http://informatik.com/testing/email.php', body)
-      .subscribe(
-        (res) => {
-          console.log(res);
+  public sendEmail(msg: string){
+    console.log("send");
+    const headers = new Headers({
+        'Content-Type' : 'application/json'
+    });
+
+   return this.http.post("https://formspree.io/jsbuchmann@gmail.com",
+        {
+            name: 'Report an Error',
+            // replyto: 'jsbuchmann@gmail.com',
+            message: msg
+        },
+        {
+            'headers' : headers
         }
-      );
-  }
+    )
+      .map(res => res.json())
+      .catch((err) => (Observable.throw(err)))
+    }
 
 }

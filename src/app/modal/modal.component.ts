@@ -1,6 +1,7 @@
 import { MessageService } from '../services/message.service';
 import { Component, OnInit } from '@angular/core';
 import { Message, MessageType } from './../models/message.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
@@ -13,7 +14,8 @@ export class ModalComponent implements OnInit {
   message: Message;
 
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              private router: Router) { }
 
   ngOnInit() {
     this.messageService.successOrErrorOccurred
@@ -32,6 +34,7 @@ export class ModalComponent implements OnInit {
 
   onClickHandled() {
     this.display = 'none';
+    this.router.navigate(['/'])
   }
 
 
