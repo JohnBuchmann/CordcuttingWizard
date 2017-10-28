@@ -27,6 +27,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
 import { ReporterrorComponent } from './reporterror/reporterror.component';
+import { DeviceFormComponent } from './device-form/device-form.component';
+import { DeviceManagerComponent } from './device-manager/device-manager.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { ReporterrorComponent } from './reporterror/reporterror.component';
     LoginComponent,
     ModalComponent,
     FooterComponent,
-    ReporterrorComponent
+    ReporterrorComponent,
+    DeviceFormComponent,
+    DeviceManagerComponent
   ],
   imports: [
     BrowserModule,

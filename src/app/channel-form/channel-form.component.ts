@@ -96,7 +96,7 @@ export class ChannelFormComponent implements OnInit {
   getChannel(id: string) {
     this.channelService.getChannel(id)
       .subscribe((channel) => {
-        this.channelToEdit = channel;
+        // this.channelToEdit = channel;
       });
   }
 
