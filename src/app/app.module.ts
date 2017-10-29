@@ -1,3 +1,4 @@
+import { DevicesComponent } from './home/devices/devices.component';
 import { MessageService } from './services/message.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -5,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DevicesComponent } from './devices/devices.component';
+import { ServiceResultsComponent } from './home/services/service-results/service-results.component';
 import { HeaderComponent } from './header/header.component';
 import { ServiceManagerComponent } from './admin/service-manager/service-manager.component';
 // import { ServiceFormComponent } from './admin/service-manager/service-form/service-form.component';
@@ -36,8 +37,7 @@ import { ServicesComponent } from './home/services/services.component';
 @NgModule({
   declarations: [
     AppComponent,
-    DevicesComponent,
-    DevicesComponent,
+    ServiceResultsComponent,
     HeaderComponent,
     ServiceManagerComponent,
     ServiceFormComponent,
@@ -48,7 +48,8 @@ import { ServicesComponent } from './home/services/services.component';
     ReporterrorComponent,
     DeviceFormComponent,
     DeviceManagerComponent,
-    ServicesComponent
+    ServicesComponent,
+    DevicesComponent
   ],
   imports: [
     BrowserModule,

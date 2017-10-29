@@ -1,3 +1,5 @@
+import { DevicesComponent } from './home/devices/devices.component';
+import { ServicesComponent } from './home/services/services.component';
 import { DeviceFormComponent } from './admin/device-manager/device-form/device-form.component';
 import { DeviceManagerComponent } from './admin/device-manager/device-manager.component';
 import { ReporterrorComponent } from './reporterror/reporterror.component';
@@ -14,7 +16,10 @@ import { ServiceManagerComponent } from './admin/service-manager/service-manager
 
 
 const routes = [
-    {path: '', component: HomeComponent },
+    {path: '', component: HomeComponent, children: [
+      {path: 'services', component: ServicesComponent},
+      {path: 'devices', component: DevicesComponent}
+    ] },
     {path: 'reporterror', component: ReporterrorComponent },
     {path: 'manager', component: ServiceManagerComponent, children: [
       {path: 'form', component: ServiceFormComponent }

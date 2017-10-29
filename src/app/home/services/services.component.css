@@ -1,0 +1,165 @@
+.container {
+  padding-top: 30px;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.top {
+  background: #212121;
+  padding: 0px 20px 20px 20px;
+  color: white;
+  text-align: center;
+}
+
+.top a {
+  color: #fe7d00
+}
+
+    @media(min-width: 600px) {
+      .top {
+        padding: 30px 20px 30px 20px;
+      }
+    }
+
+h1 {
+  font-size: 1.5rem;
+}
+
+    @media(min-width: 600px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+.allservices img {
+  width: 15%;
+  margin-bottom: 30px;
+}
+
+.quick-results {
+  justify-content: center;
+  margin-bottom: 30px;
+
+}
+
+  .quick-results div {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .quick-results i {
+    font-size: 30px;
+  }
+
+  .quick-results span {
+    padding: 0 20px;
+    white-space: nowrap;
+  }
+
+  .quick-results span.times {
+    color: #717171;
+  }
+
+  .quick-results span .fa-check {
+    color: #fe7d00;
+  }
+
+.viewdetailsbutton {
+  background: #fe7d00;
+  color: white;
+}
+
+
+
+ul.channels {
+  margin: 0px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  background: #FFFFFF;
+  text-align: center;
+}
+
+    @media(min-width: 600px) {
+      ul.channels {
+        padding-top: 50px;
+        padding-bottom: 40px;
+      }
+    }
+
+ul.channels li {
+  list-style: none;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+input[type=checkbox] {
+  display:none;
+}
+
+label {
+  background: #000000;
+}
+
+
+
+input[type=checkbox] + label {
+  height: 60px;
+  width: 60px;
+  display:inline-block;
+  padding: 0 0 0 0px;
+  background-size: contain;
+  border: 5px solid white;
+}
+
+input[type=checkbox]:checked + label {
+  display:inline-block;
+  padding: 0 0 0 0px;
+  border: 8px solid #FFA100;
+  opacity: 80%;
+}
+
+
+#results {
+  background: #E7E7E7;
+  padding: 30px 0;
+}
+
+    @media(min-width: 500px) {
+      #results {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media(min-width: 1250px) {
+      #results {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+      }
+    }
+
+.card {
+  margin: 0 5px 10px 5px;
+
+}
+
+
+
+.alert.alert-danger {
+  margin-top: 40px;
+  background: #fe7d00;
+  color: white;
+  border: none;
+  padding: 20px;
+  font-size: 20px;
+}
+
+
+
+
+
+
+
