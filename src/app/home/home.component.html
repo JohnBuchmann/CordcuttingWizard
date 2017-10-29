@@ -1,5 +1,12 @@
-<a [routerLink]="['/services']">Services Wizard</a>
-<a [routerLink]="['/devices']">Devices Wizard</a>
-
+<div class="container">
+  <div class="mode">
+    <div class="services">
+      <a [routerLink]="['/services']">Services Wizard</a>
+    </div>
+    <div class="devices">
+      <a [routerLink]="['/devices']">Devices Wizard</a>
+    </div>
+  </div>
+</div>
 
 <router-outlet></router-outlet>
