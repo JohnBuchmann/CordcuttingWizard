@@ -1,6 +1,6 @@
 import { MessageService } from '../../../services/message.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChannelsService } from '../../../services/channels.service';
+import { ServicesService } from '../../../services/services.service';
 import { Channel } from '../../../models/channel.model';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -20,7 +20,7 @@ export class ServiceFormComponent implements OnInit {
   channelToEdit: Channel;
 
   constructor(
-      private channelService: ChannelsService,
+      private servicesService: ServicesService,
       private route: ActivatedRoute,
       private router: Router,
       private messageService: MessageService ) { }
@@ -94,9 +94,9 @@ export class ServiceFormComponent implements OnInit {
 
 
   getChannel(id: string) {
-    this.channelService.getChannel(id)
+    this.servicesService.getChannel(id)
       .subscribe((channel) => {
-        // this.channelToEdit = channel;
+        this.channelToEdit = channel;
       });
   }
 
@@ -164,10 +164,10 @@ export class ServiceFormComponent implements OnInit {
   }
 
   addChannel(channel: Channel) {
-    this.channelService.addChannel(channel)
+    this.servicesService.addChannel(channel)
       .subscribe(
         (res) => {
-          this.channelService.downloaded = false;
+          this.servicesService.downloaded = false;
           this.hideForm = true;
           this.editMode = false;
           this._id = '';
@@ -181,10 +181,10 @@ export class ServiceFormComponent implements OnInit {
   }
 
   updateChannel(_id: string, channelToEdit: Channel) {
-    this.channelService.updateChannel(_id, channelToEdit)
+    this.servicesService.updateChannel(_id, channelToEdit)
     .subscribe(
       (res) => {
-        this.channelService.downloaded = false;
+        this.servicesService.downloaded = false;
         this.hideForm = true;
         this.editMode = false;
         this._id = '';
@@ -206,10 +206,10 @@ export class ServiceFormComponent implements OnInit {
   }
 
   deleteChannel() {
-    this.channelService.deleteChannel(this._id)
+    this.servicesService.deleteChannel(this._id)
       .subscribe(
         (res) => {
-          this.channelService.downloaded = false;
+          this.servicesService.downloaded = false;
           this.hideForm = true;
           this.editMode = false;
           this._id = '';

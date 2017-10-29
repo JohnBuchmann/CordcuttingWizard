@@ -1,5 +1,5 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChannelsService } from './../../services/channels.service';
+import { ServicesService } from './../../services/services.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Channel } from './../../models/channel.model';
@@ -14,14 +14,14 @@ export class ServiceManagerComponent implements OnInit {
   allChannels2: Channel[] = [];
 
   constructor(
-          private channelsService: ChannelsService,
+          private servicesService: ServicesService,
           private router: Router,
           private route: ActivatedRoute) { }
 
   ngOnInit() {
-        this.allChannels2 = this.channelsService.getAllChannels();
+        this.allChannels2 = this.servicesService.getAllChannels();
 
-        // this.channelsService.channelsSubject
+        // this.servicesService.channelsSubject
         //   .subscribe((res) => {
         //     console.log(res);
         //   });

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Channel } from './../../models/channel.model';
-import { ChannelsService } from './../../services/channels.service';
+import { ServicesService } from './../../services/services.service';
 import { identifierModuleUrl } from '@angular/compiler';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { EmailService } from './../../services/email.service';
@@ -50,12 +50,12 @@ export class ServicesComponent implements OnInit {
   fuboLogo = FUBO_LOGO;
 
   constructor(
-      private channelsService: ChannelsService,
+      private servicesService: ServicesService,
       public modalService: NgbModal,
       public emailService: EmailService) {
 
-    this.channelsService.downloadChannels();
-    this.allChannels = this.channelsService.getAllChannels();
+    this.servicesService.downloadChannels();
+    this.allChannels = this.servicesService.getAllChannels();
   }
 
 
@@ -250,9 +250,5 @@ onClickDetails() {
   }
 
   }
-
-aaa() {
-  this.channelsService.aaa();
-}
 
 }

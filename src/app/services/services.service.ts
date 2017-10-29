@@ -9,7 +9,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { FIREBASE_URL } from '../config/config';
 
 @Injectable()
-export class ChannelsService {
+export class ServicesService {
 
   allChannels: Channel[] = [];
   downloaded = false;

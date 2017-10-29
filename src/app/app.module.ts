@@ -17,7 +17,7 @@ import { HomeComponent } from './home/home.component';
 /* Services */
 import { AuthService } from './services/auth.service';
 import { EmailService } from './services/email.service';
-import { ChannelsService } from './services/channels.service';
+import { ServicesService } from './services/services.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
@@ -63,7 +63,7 @@ import { ServicesComponent } from './home/services/services.component';
     NgbModule.forRoot(),
     ShareButtonsModule.forRoot()
   ],
-  providers: [ChannelsService, MessageService, AuthService, EmailService],
+  providers: [ServicesService, MessageService, AuthService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
