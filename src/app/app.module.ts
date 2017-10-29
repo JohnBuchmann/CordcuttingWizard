@@ -7,8 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DevicesComponent } from './devices/devices.component';
 import { HeaderComponent } from './header/header.component';
-import { ManagerComponent } from './manager/manager.component';
-import { ChannelFormComponent } from './channel-form/channel-form.component';
+import { ServiceManagerComponent } from './admin/service-manager/service-manager.component';
+// import { ServiceFormComponent } from './admin/service-manager/service-form/service-form.component';
+import { ServiceFormComponent } from "./admin/service-manager/service-form/service-form.component";
 import { HomeComponent } from './home/home.component';
 
 
@@ -27,8 +28,10 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 import {ShareButtonsModule} from 'ngx-sharebuttons';
 import { ReporterrorComponent } from './reporterror/reporterror.component';
-import { DeviceFormComponent } from './device-form/device-form.component';
-import { DeviceManagerComponent } from './device-manager/device-manager.component';
+import { DeviceFormComponent } from './admin/device-manager/device-form/device-form.component';
+import { DeviceManagerComponent } from './admin/device-manager/device-manager.component';
+import { ServicesComponent } from './home/services/services.component';
+
 
 @NgModule({
   declarations: [
@@ -36,15 +39,16 @@ import { DeviceManagerComponent } from './device-manager/device-manager.componen
     DevicesComponent,
     DevicesComponent,
     HeaderComponent,
-    ManagerComponent,
-    ChannelFormComponent,
+    ServiceManagerComponent,
+    ServiceFormComponent,
     HomeComponent,
     LoginComponent,
     ModalComponent,
     FooterComponent,
     ReporterrorComponent,
     DeviceFormComponent,
-    DeviceManagerComponent
+    DeviceManagerComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,18 +1,18 @@
-import { MessageService } from '../services/message.service';
+import { MessageService } from '../../../services/message.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChannelsService } from '../services/channels.service';
-import { Channel } from '../models/channel.model';
+import { ChannelsService } from '../../../services/channels.service';
+import { Channel } from '../../../models/channel.model';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Message, MessageType } from './../models/message.model';
+import { Message, MessageType } from './../../../models/message.model';
 
 @Component({
-  selector: 'app-channel-form',
-  templateUrl: './channel-form.component.html',
-  styleUrls: ['./channel-form.component.css']
+  selector: 'app-service-form',
+  templateUrl: './service-form.component.html',
+  styleUrls: ['./service-form.component.css']
 })
-export class ChannelFormComponent implements OnInit {
+export class ServiceFormComponent implements OnInit {
   myForm: FormGroup;
   hideForm = true;
   editMode = false;

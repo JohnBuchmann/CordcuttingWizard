@@ -1,15 +1,15 @@
 import { ActivatedRoute, Router } from '@angular/router';
-import { ChannelsService } from '../services/channels.service';
+import { ChannelsService } from './../../services/channels.service';
 import { Component, OnInit } from '@angular/core';
 
-import { Channel } from './../models/channel.model';
+import { Channel } from './../../models/channel.model';
 
 @Component({
   selector: 'app-manager',
-  templateUrl: './manager.component.html',
-  styleUrls: ['./manager.component.css']
+  templateUrl: './service-manager.component.html',
+  styleUrls: ['./service-manager.component.css']
 })
-export class ManagerComponent implements OnInit {
+export class ServiceManagerComponent implements OnInit {
 
   allChannels2: Channel[] = [];
 
