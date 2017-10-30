@@ -1,3 +1,61 @@
-<p>
-  devices works!
-</p>
+<section *ngIf="!noResults" class="quickresults">
+  <div class="container">
+      <div class="quickresults-wrapper">
+          <div *ngIf="Roku.length > 0; then checkroku else crossroku"></div>
+          <ng-template #checkroku><span><i class="fa fa-check"></i> Roku</span></ng-template>
+          <ng-template #crossroku><span class="times"><i class="fa fa-times"></i> Roku</span></ng-template>
+
+          <div *ngIf="AppleTv.length > 0; then checkappletv else crossappletv"></div>
+          <ng-template #checkappletv><span><i class="fa fa-check"></i> Apple TV</span></ng-template>
+          <ng-template #crossappletv><span class="times"><i class="fa fa-times"></i> Apple TV</span></ng-template>
+      </div>
+
+
+
+      <button *ngIf="!noResults" type="button" class="btn viewdetailsbutton" (click)="onClickDetails()">
+          {{ viewDetailsButtonText }}
+      </button>
+
+      <section class="results">
+              <div *ngIf="noResults && countChecked > 0" class="alert alert-danger">
+                  <span>There are no services with your chosen channels.</span>
+              </div>
+
+              <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                  <div id="details">
+                      <div id="results" *ngIf="!noResults">
+
+                          <div class="card" *ngIf="Roku.length > 0">
+                              <app-device-results  [device]="Roku" [deviceName]="RokuName"></app-device-results>
+                          </div>
+
+                          <div class="card" *ngIf="AppleTv.length > 0">
+                              <app-device-results  [device]="AppleTv" [deviceName]="AppleTvName"></app-device-results>
+                          </div>
+
+                      </div>
+                </div>
+
+
+              </div>
+        </section>
+
+  </div>
+</section>
+
+
+
+
+
+
+<section class="channels-and-features">
+  <ul class="channels">
+    <li *ngFor="let c of allChannels; let index = index">
+      <input type="checkbox" [id]="c" (change)="onChannelClick($event, c, index)">
+      <label placement="top" ngbTooltip="{{ c }}" class="channelicon"
+        [for]="c"
+        [ngStyle]="{'background-image': 'url(assets/logos/' + c + '.png)'}">
+      </label>
+    </li>
+</ul>
+</section>

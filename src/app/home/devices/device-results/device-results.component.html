@@ -1,0 +1,20 @@
+
+        <div class="card-block">
+            <h3>{{ deviceName }}</h3>
+            <div *ngFor="let item of device">
+                <div class="media">
+                    <img class="channellogo mr-2" src='/assets/logos/{{item.name}}.png' alt="">
+                    <div class="media-body">
+                        <p *ngIf="item.status === 'Yes'">Comes Standard</p>
+                        <p *ngIf="item.status !== 'Yes'">{{ item.status }}</p>
+                    </div>
+
+                </div>
+              </div>
+        </div>
+
+
+
+
+
+
