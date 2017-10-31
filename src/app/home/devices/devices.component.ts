@@ -20,21 +20,29 @@ export class DevicesComponent implements OnInit {
   isCollapsed = true;
   viewDetailsButtonText = 'View Details';
 
-  allChannels = [];
+  allDeviceChannels = [];
+  allDeviceFeatures = [];
 
-  AppleTvChannels = [];
-  RokuChannels = [];
+
+  allAppleTvChannels = [];
+  allRokuChannels = [];
+
+  allRokuFeatures = [];
+  allAppleTvFeatures = [];
 
 
 
   selectedChannels = [];
+  selectedFeatures = [];
+
 
   noResults = true;
   countChecked = 0;
 
-  AppleTv = [];
-  Chromecast = []
-  Roku = [];
+  AppleTvHasChannels = [];
+  AppleTvHasFeatures = [];
+  RokuHasChannels = [];
+  RokuHasFeatures = [];
 
   AppleTvName = 'Apple TV';
   ChromecastName = 'Chromecast';
@@ -44,12 +52,21 @@ export class DevicesComponent implements OnInit {
       private devicesService: DevicesService,
       public modalService: NgbModal) {
 
-    this.allChannels = this.devicesService.getAllChannels();
-    this.AppleTvChannels = this.devicesService.getAppleTvChannels();
-    this.RokuChannels = this.devicesService.getRokuChannels();
+    this.allDeviceFeatures = this.devicesService.getAllFeatures();
 
-    console.log(this.allChannels);
+    this.devicesService.getDeviceFeatures();
+    this.allAppleTvFeatures = this.devicesService.getAppleTvFeatures();
+    this.allRokuFeatures = this.devicesService.getRokuFeatures();
 
+
+    this.allDeviceChannels = this.devicesService.getAllChannels();
+
+
+    this.allAppleTvChannels = this.devicesService.getAppleTvChannels();
+    this.allRokuChannels = this.devicesService.getRokuChannels();
+
+    console.log(this.allAppleTvFeatures);
+    console.log(this.allRokuFeatures);
   }
 
 
@@ -65,7 +82,7 @@ export class DevicesComponent implements OnInit {
     if (isChecked) {
       const myPromise = new Promise((resolve, reject) => {
         this.selectedChannels.push(channel);
-        this.clear();
+        this.clearChannels();
         resolve();
       })
       .then(() => {
@@ -76,7 +93,7 @@ export class DevicesComponent implements OnInit {
        const idx = this.selectedChannels.indexOf(channel);
        const myPromise = new Promise((resolve, reject) => {
          this.selectedChannels.splice(idx, 1);
-         this.clear();
+         this.clearChannels();
          resolve();
        })
        .then(() => {
@@ -86,37 +103,67 @@ export class DevicesComponent implements OnInit {
      }
   }
 
-  clear() {
-    this.AppleTv = [];
-    this.Chromecast = [];
-    this.Roku = [];
+  onFeatureClick(event, feature, index) {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      const myPromise = new Promise((resolve, reject) => {
+        this.selectedFeatures.push(feature);
+        this.clearFeatures();
+        resolve();
+      })
+      .then(() => {
+        this.countChecked += 1;
+        this.filterFeatures();
+      })
+    } else {
+      const idx = this.selectedFeatures.indexOf(feature);
+      const myPromise = new Promise((resolve, reject) => {
+        this.selectedFeatures.splice(idx, 1);
+        this.clearFeatures();
+        resolve();
+      })
+      .then(() => {
+        this.countChecked -= 1;
+        this.filterFeatures();
+      })
+    }
+  }
+
+  clearChannels() {
+    this.AppleTvHasChannels = [];
+    this.RokuHasChannels = [];
+  }
+
+  clearFeatures() {
+    this.AppleTvHasFeatures = [];
+    this.RokuHasFeatures = [];
   }
 
 
   filterChannels(){
     this.selectedChannels.forEach((current, index) => {
 
-      for (let channel of this.RokuChannels) {
+      for (let channel of this.allRokuChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.Roku.push(channel);
+          this.RokuHasChannels.push(channel);
         }
       }
-
-
-
-      for (let channel of this.AppleTvChannels) {
+      for (let channel of this.allAppleTvChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.AppleTv.push(channel);
+          this.AppleTvHasChannels.push(channel);
         }
       }
     })
 
-    if (this.selectedChannels.length > this.Roku.length) {
-      this.Roku = [];
+    console.log(this.RokuHasChannels);
+    console.log(this.AppleTvHasChannels);
+
+    if (this.selectedChannels.length > this.RokuHasChannels.length) {
+      this.RokuHasChannels = [];
     }
 
-    if (this.selectedChannels.length > this.AppleTv.length) {
-      this.AppleTv = [];
+    if (this.selectedChannels.length > this.AppleTvHasChannels.length) {
+      this.AppleTvHasChannels = [];
     }
 
     this.checkIfResults();
@@ -125,25 +172,57 @@ export class DevicesComponent implements OnInit {
 
 
 
+  filterFeatures() {
+
+    this.selectedFeatures.forEach((current, index) => {
+
+            for (let feature of this.allAppleTvFeatures) {
+              if (feature.key === current.key) {
+                this.AppleTvHasFeatures.push({key: feature.key, status: feature.status});
+              }
+            }
+            for (let feature of this.allRokuFeatures) {
+              if (feature.key === current.key) {
+                this.RokuHasFeatures.push({key: feature.key, status: feature.status});
+              }
+            }
+          }
+        )
+
+
+        if (this.selectedFeatures.length > this.AppleTvHasFeatures.length) {
+          this.AppleTvHasFeatures = [];
+        }
+
+
+          if (this.selectedFeatures.length > this.RokuHasFeatures.length) {
+            this.RokuHasFeatures = [];
+          }
+
+          this.checkIfResults();
+  }
+
+
+
   checkIfResults() {
-    if (this.Roku.length === 0
-        && this.AppleTv.length === 0) {
-      this.noResults = true;
-    } else {
-      this.noResults = false;
-    }
+    // if (this.RokuHasChannels.length === 0
+    //     && this.AppleTvHasChannels.length === 0) {
+    //   this.noResults = true;
+    // } else {
+    //   this.noResults = false;
+    // }
+
+    this.noResults = false;
   }
 
 
 
 onClickDetails() {
-  this.isCollapsed = !this.isCollapsed;
-  if (this.isCollapsed) {
-    this.viewDetailsButtonText = 'View Details';
-  } else {
-    this.viewDetailsButtonText = 'Hide Details';
+    this.isCollapsed = !this.isCollapsed;
+    if (this.isCollapsed) {
+      this.viewDetailsButtonText = 'View Details';
+    } else {
+      this.viewDetailsButtonText = 'Hide Details';
+    }
   }
-
-  }
-
 }

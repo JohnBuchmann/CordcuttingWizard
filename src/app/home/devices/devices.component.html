@@ -1,11 +1,11 @@
 <section *ngIf="!noResults" class="quickresults">
   <div class="container">
       <div class="quickresults-wrapper">
-          <div *ngIf="Roku.length > 0; then checkroku else crossroku"></div>
+          <div *ngIf="RokuHasChannels.length > 0; then checkroku else crossroku"></div>
           <ng-template #checkroku><span><i class="fa fa-check"></i> Roku</span></ng-template>
           <ng-template #crossroku><span class="times"><i class="fa fa-times"></i> Roku</span></ng-template>
 
-          <div *ngIf="AppleTv.length > 0; then checkappletv else crossappletv"></div>
+          <div *ngIf="AppleTvHasChannels.length > 0; then checkappletv else crossappletv"></div>
           <ng-template #checkappletv><span><i class="fa fa-check"></i> Apple TV</span></ng-template>
           <ng-template #crossappletv><span class="times"><i class="fa fa-times"></i> Apple TV</span></ng-template>
       </div>
@@ -25,12 +25,12 @@
                   <div id="details">
                       <div id="results" *ngIf="!noResults">
 
-                          <div class="card" *ngIf="Roku.length > 0">
-                              <app-device-results  [device]="Roku" [deviceName]="RokuName"></app-device-results>
+                          <div class="card" *ngIf="RokuHasChannels.length > 0">
+                              <app-device-results  [device]="RokuHasChannels" [deviceName]="RokuName"></app-device-results>
                           </div>
 
-                          <div class="card" *ngIf="AppleTv.length > 0">
-                              <app-device-results  [device]="AppleTv" [deviceName]="AppleTvName"></app-device-results>
+                          <div class="card" *ngIf="AppleTvHasChannels.length > 0">
+                              <app-device-results  [device]="AppleTvHasChannels" [deviceName]="AppleTvName"></app-device-results>
                           </div>
 
                       </div>
@@ -49,8 +49,18 @@
 
 
 <section class="channels-and-features">
+
+  <div class="features">
+    <div *ngFor="let f of allDeviceFeatures; let index = index">
+      <label [for]="f.key">
+          <input name="feature" type="checkbox" [id]="f.key" (change)="onFeatureClick($event, f, index)">
+          {{ f.status }}
+      </label>
+    </div>
+  </div>
+
   <ul class="channels">
-    <li *ngFor="let c of allChannels; let index = index">
+    <li *ngFor="let c of allDeviceChannels; let index = index">
       <input type="checkbox" [id]="c" (change)="onChannelClick($event, c, index)">
       <label placement="top" ngbTooltip="{{ c }}" class="channelicon"
         [for]="c"

@@ -76,11 +76,11 @@ ul.channels li {
   margin-right: 10px;
 }
 
-input[type=checkbox] {
+ul.channels input[type=checkbox] {
   display:none;
 }
 
-label {
+ul.channels label {
   background: #000000;
 }
 

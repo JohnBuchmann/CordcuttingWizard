@@ -11,11 +11,16 @@ import { FIREBASE_URL } from '../config/config';
 @Injectable()
 export class DevicesService {
 
+  private DeviceFeatures: {key: string, status: string}[] = [];
+
   private RokuChannels: string[] = [];
   private RokuChannelsAndStatus: {name: string, status: string}[] = [];
 
   private AppleTvChannels: string[] = [];
   private AppleTvChannelsAndStatus: {name: string, status: string}[] = [];
+
+  private RokuFeatures = [];
+  private AppleTvFeatures = [];
 
   downloaded = false;
 
@@ -68,6 +73,58 @@ export class DevicesService {
     })
     return AllChannels;
   }
+
+
+  getAllFeatures() {
+    this.af.list('/device_features')
+      .subscribe(
+        (res) => {
+          res.forEach(
+            (val, index) => {
+              this.DeviceFeatures.push({key: val.$key, status: val.$value})
+            }
+          )
+        }
+      )
+      return this.DeviceFeatures;
+  }
+
+
+ getDeviceFeatures() {
+
+    this.af.list('/devices/Apple TV/Features')
+    .subscribe(
+      (res) => {
+        res.forEach(
+          (val, index) => {
+            this.AppleTvFeatures.push({key: val.$key, status: val.$value})
+          }
+        )
+      }
+    )
+
+
+    this.af.list('/devices/Roku/Features')
+    .subscribe(
+      (res) => {
+        res.forEach(
+          (val, index) => {
+            this.RokuFeatures.push({key: val.$key, status: val.$value})
+          }
+        )
+      }
+    )
+
+ }
+
+ getAppleTvFeatures() {
+   return this.AppleTvFeatures;
+ }
+
+ getRokuFeatures() {
+   return this.RokuFeatures;
+ }
+
 
 
   getRokuChannels() {
