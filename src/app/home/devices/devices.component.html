@@ -19,16 +19,17 @@
             <span>There are no services with your chosen channels.</span>
         </div>
 
+
         <div id="collapseExample" [ngbCollapse]="isCollapsed">
             <div id="details">
                 <div id="results" *ngIf="!noChannelResults">
 
                     <div class="card" *ngIf="RokuHasChannels.length > 0">
-                        <app-device-results  [deviceChannels]="RokuHasChannels" [deviceName]="RokuName"></app-device-results>
+                        <app-device-results  [itemsArray]="RokuHasChannels" [deviceName]="RokuName"></app-device-results>
                     </div>
 
                     <div class="card" *ngIf="AppleTvHasChannels.length > 0">
-                        <app-device-results  [deviceChannels]="AppleTvHasChannels" [deviceName]="AppleTvName"></app-device-results>
+                        <app-device-results  [itemsArray]="AppleTvHasChannels" [deviceName]="AppleTvName"></app-device-results>
                     </div>
                 </div>
               </div>
@@ -64,10 +65,10 @@
                   <div id="details">
                       <div id="results">
                           <div class="card" *ngIf="RokuHasFeatures.length > 0">
-                              <app-device-results  [deviceFeatures]="RokuHasFeatures" [deviceName]="RokuName"></app-device-results>
+                              <app-device-results  [itemsArray]="RokuHasFeatures" [deviceName]="RokuName"></app-device-results>
                           </div>
                           <div class="card" *ngIf="AppleTvHasFeatures.length > 0">
-                              <app-device-results  [deviceFeatures]="AppleTvHasFeatures" [deviceName]="AppleTvName"></app-device-results>
+                              <app-device-results  [itemsArray]="AppleTvHasFeatures" [deviceName]="AppleTvName"></app-device-results>
                           </div>
                       </div>
                 </div>
@@ -75,6 +76,7 @@
           </section>
     </div>
   </section>
+
 
 
 

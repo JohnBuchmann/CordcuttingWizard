@@ -6,9 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./device-results.component.css']
 })
 export class DeviceResultsComponent implements OnInit {
-
-  @Input() deviceChannels;
-  @Input() deviceFeatures;
+  @Input() itemsArray;
   // @Input() deviceLogo;
   @Input() deviceName;
 
