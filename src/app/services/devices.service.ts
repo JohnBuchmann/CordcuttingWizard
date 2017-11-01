@@ -22,8 +22,6 @@ export class DevicesService {
   private RokuFeatures = [];
   private AppleTvFeatures = [];
 
-  downloaded = false;
-
   channelsSubject = new Subject<Channel[]>();
 
   constructor(
@@ -75,7 +73,9 @@ export class DevicesService {
   }
 
 
+
   getAllFeatures() {
+    if (this.DeviceFeatures.length == 0) {
     this.af.list('/device_features')
       .subscribe(
         (res) => {
@@ -86,12 +86,14 @@ export class DevicesService {
           )
         }
       )
-      return this.DeviceFeatures;
+      // this.downloaded = true;
+    }
+    return this.DeviceFeatures;
+
   }
 
 
  getDeviceFeatures() {
-
     this.af.list('/devices/Apple TV/Features')
     .subscribe(
       (res) => {

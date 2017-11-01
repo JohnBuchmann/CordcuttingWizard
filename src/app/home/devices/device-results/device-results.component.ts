@@ -7,7 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DeviceResultsComponent implements OnInit {
 
-  @Input() device;
+  @Input() deviceChannels;
+  @Input() deviceFeatures;
   // @Input() deviceLogo;
   @Input() deviceName;
 

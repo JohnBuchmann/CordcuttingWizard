@@ -36,13 +36,19 @@ export class DevicesComponent implements OnInit {
   selectedFeatures = [];
 
 
-  noResults = true;
+  noChannelResults = true;
+  noFeatureResults = true;
   countChecked = 0;
 
+
+
   AppleTvHasChannels = [];
-  AppleTvHasFeatures = [];
   RokuHasChannels = [];
+
+  AppleTvHasFeatures = [];
   RokuHasFeatures = [];
+
+
 
   AppleTvName = 'Apple TV';
   ChromecastName = 'Chromecast';
@@ -52,21 +58,16 @@ export class DevicesComponent implements OnInit {
       private devicesService: DevicesService,
       public modalService: NgbModal) {
 
-    this.allDeviceFeatures = this.devicesService.getAllFeatures();
+      this.allDeviceFeatures = this.devicesService.getAllFeatures();
 
-    this.devicesService.getDeviceFeatures();
-    this.allAppleTvFeatures = this.devicesService.getAppleTvFeatures();
-    this.allRokuFeatures = this.devicesService.getRokuFeatures();
+      this.devicesService.getDeviceFeatures();
+      this.allAppleTvFeatures = this.devicesService.getAppleTvFeatures();
+      this.allRokuFeatures = this.devicesService.getRokuFeatures();
 
+      this.allDeviceChannels = this.devicesService.getAllChannels();
 
-    this.allDeviceChannels = this.devicesService.getAllChannels();
-
-
-    this.allAppleTvChannels = this.devicesService.getAppleTvChannels();
-    this.allRokuChannels = this.devicesService.getRokuChannels();
-
-    console.log(this.allAppleTvFeatures);
-    console.log(this.allRokuFeatures);
+      this.allAppleTvChannels = this.devicesService.getAppleTvChannels();
+      this.allRokuChannels = this.devicesService.getRokuChannels();
   }
 
 
@@ -155,9 +156,6 @@ export class DevicesComponent implements OnInit {
       }
     })
 
-    console.log(this.RokuHasChannels);
-    console.log(this.AppleTvHasChannels);
-
     if (this.selectedChannels.length > this.RokuHasChannels.length) {
       this.RokuHasChannels = [];
     }
@@ -166,7 +164,7 @@ export class DevicesComponent implements OnInit {
       this.AppleTvHasChannels = [];
     }
 
-    this.checkIfResults();
+    this.checkIfChannelResults();
 
   }
 
@@ -199,20 +197,29 @@ export class DevicesComponent implements OnInit {
             this.RokuHasFeatures = [];
           }
 
-          this.checkIfResults();
+          this.checkIfFeaturesResults();
   }
 
 
 
-  checkIfResults() {
+  checkIfChannelResults() {
     // if (this.RokuHasChannels.length === 0
     //     && this.AppleTvHasChannels.length === 0) {
-    //   this.noResults = true;
+    //   this.noChannelResults = true;
     // } else {
-    //   this.noResults = false;
+    //   this.noChannelResults = false;
     // }
+    this.noChannelResults = false;
+  }
 
-    this.noResults = false;
+  checkIfFeaturesResults() {
+    // if (this.RokuHasChannels.length === 0
+    //     && this.AppleTvHasChannels.length === 0) {
+    //   this.noChannelResults = true;
+    // } else {
+    //   this.noChannelResults = false;
+    // }
+    this.noFeatureResults = false;
   }
 
 
