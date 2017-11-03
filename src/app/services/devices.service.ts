@@ -11,7 +11,6 @@ import { FIREBASE_URL } from '../config/config';
 @Injectable()
 export class DevicesService {
 
-  private DeviceFeatures: {key: string, status: string}[] = [];
 
   private RokuChannels: string[] = [];
   private RokuChannelsAndStatus: {name: string, status: string}[] = [];
@@ -19,14 +18,35 @@ export class DevicesService {
   private AppleTvChannels: string[] = [];
   private AppleTvChannelsAndStatus: {name: string, status: string}[] = [];
 
-  private RokuFeatures = [];
-  private AppleTvFeatures = [];
-
   channelsSubject = new Subject<Channel[]>();
+
+  test = [];
 
   constructor(
       private http: Http,
       private af: AngularFireDatabase ) {}
+
+
+  getAllChannels2() {
+      let channels = [];
+      this.af.list('/device_channels/', {
+        preserveSnapshot: true
+      }
+      )
+      .do((snapshots) => {
+        snapshots.forEach(snapshot => {
+          console.log(snapshot.key);
+            channels.push(snapshot.key);
+        });
+
+        // this.downloaded = true;
+      })
+      .subscribe();
+
+      return channels;
+  }
+
+
 
   getAllChannels() {
     // if (!this.downloaded) {
@@ -38,7 +58,6 @@ export class DevicesService {
           res => {
             res.forEach(
               (val, index) => {
-                this.RokuChannels.push(val.$key);
                 this.RokuChannelsAndStatus.push({name: val.$key, status: val.$value});
               }
             )
@@ -52,7 +71,6 @@ export class DevicesService {
             res => {
                 res.forEach(
                   (val, index) => {
-                      this.AppleTvChannels.push(val.$key);
                       this.AppleTvChannelsAndStatus.push({name: val.$key, status: val.$value});
                   }
                 )
@@ -62,71 +80,42 @@ export class DevicesService {
 
 
     // }
-    console.log(this.AppleTvChannels);
-    AllChannels = this.RokuChannels.concat(this.AppleTvChannels);
 
-    // remove duplicates from array
-    AllChannels = AllChannels.filter(function(item, pos) {
-      return AllChannels.indexOf(item) == pos;
-    })
-    return AllChannels;
   }
 
 
-
   getAllFeatures() {
-    if (this.DeviceFeatures.length == 0) {
+    let DeviceFeatures = [];
+    if (DeviceFeatures.length == 0) {
     this.af.list('/device_features')
       .subscribe(
         (res) => {
           res.forEach(
             (val, index) => {
-              this.DeviceFeatures.push({key: val.$key, status: val.$value})
+              DeviceFeatures.push({key: val.$key, status: val.$value})
             }
           )
         }
       )
-      // this.downloaded = true;
     }
-    return this.DeviceFeatures;
-
+    return DeviceFeatures;
   }
 
 
- getDeviceFeatures() {
-    this.af.list('/devices/Apple TV/Features')
-    .subscribe(
-      (res) => {
-        res.forEach(
-          (val, index) => {
-            this.AppleTvFeatures.push({key: val.$key, status: val.$value})
-          }
-        )
-      }
-    )
-
-
-    this.af.list('/devices/Roku/Features')
-    .subscribe(
-      (res) => {
-        res.forEach(
-          (val, index) => {
-            this.RokuFeatures.push({key: val.$key, status: val.$value})
-          }
-        )
-      }
-    )
-
- }
-
- getAppleTvFeatures() {
-   return this.AppleTvFeatures;
- }
-
- getRokuFeatures() {
-   return this.RokuFeatures;
- }
-
+ getDeviceFeatures(device) {
+  let features = [];
+  this.af.list('/devices/' + device + '/Features')
+  .subscribe(
+    (res) => {
+      res.forEach(
+        (val, index) => {
+          features.push({key: val.$key, status: val.$value})
+        }
+      )
+    }
+  )
+   return features;
+  }
 
 
   getRokuChannels() {

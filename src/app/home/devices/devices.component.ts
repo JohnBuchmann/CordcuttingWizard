@@ -58,14 +58,15 @@ export class DevicesComponent implements OnInit {
       private devicesService: DevicesService,
       public modalService: NgbModal) {
 
+
+      this.allDeviceChannels = this.devicesService.getAllChannels2();
+
+      // get all features and features for each device
       this.allDeviceFeatures = this.devicesService.getAllFeatures();
+      this.allAppleTvFeatures = this.devicesService.getDeviceFeatures('Apple TV');
+      this.allRokuFeatures = this.devicesService.getDeviceFeatures('Roku');
 
-      this.devicesService.getDeviceFeatures();
-      this.allAppleTvFeatures = this.devicesService.getAppleTvFeatures();
-      this.allRokuFeatures = this.devicesService.getRokuFeatures();
-
-      this.allDeviceChannels = this.devicesService.getAllChannels();
-
+      this.devicesService.getAllChannels();
       this.allAppleTvChannels = this.devicesService.getAppleTvChannels();
       this.allRokuChannels = this.devicesService.getRokuChannels();
   }
