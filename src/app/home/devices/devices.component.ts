@@ -217,23 +217,22 @@ export class DevicesComponent implements OnInit {
 
 
   checkIfChannelResults() {
-    // if (this.RokuHasChannels.length === 0
-    //     && this.AppleTvHasChannels.length === 0) {
-    //   this.noChannelResults = true;
-    // } else {
-    //   this.noChannelResults = false;
-    // }
-    this.noChannelResults = false;
+    if (this.RokuHasChannels.length === 0
+        && this.AppleTvHasChannels.length === 0) {
+      this.noChannelResults = true;
+    } else {
+      this.noChannelResults = false;
+    }
+
   }
 
   checkIfFeaturesResults() {
-    // if (this.RokuHasChannels.length === 0
-    //     && this.AppleTvHasChannels.length === 0) {
-    //   this.noChannelResults = true;
-    // } else {
-    //   this.noChannelResults = false;
-    // }
-    this.noFeatureResults = false;
+    if (this.RokuHasFeatures.length === 0
+        && this.AppleTvHasFeatures.length === 0) {
+      this.noFeatureResults = true;
+    } else {
+      this.noFeatureResults = false;
+    }
   }
 
 

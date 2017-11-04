@@ -1,3 +1,4 @@
+
 <section *ngIf="!noChannelResults" class="quickresults">
   <div class="container">
       <div class="quickresults-wrapper">
@@ -15,11 +16,6 @@
       </button>
 
       <section class="results">
-        <div *ngIf="noChannelResults && countChecked > 0" class="alert alert-danger">
-            <span>There are no services with your chosen channels.</span>
-        </div>
-
-
         <div id="collapseExample" [ngbCollapse]="isCollapsed">
             <div id="details">
                 <div id="results" *ngIf="!noChannelResults">
@@ -38,29 +34,36 @@
   </div>
 </section>
 
+<section>
+    <div class="container">
+        <div *ngIf="noChannelResults && countChecked > 0" class="alert alert-danger">
+            <span>There are no streaming devices with these channels.</span>
+        </div>
+    </div>
+</section>
+
+
+
+
 
 
 <section *ngIf="!noFeatureResults" class="quickresults">
     <div class="container">
-        <!-- <div class="quickresults-wrapper">
-            <div *ngIf="RokuHasChannels.length > 0; then checkroku else crossroku"></div>
+        <div class="quickresults-wrapper">
+            <div *ngIf="RokuHasFeatures.length > 0; then checkroku else crossroku"></div>
             <ng-template #checkroku><span><i class="fa fa-check"></i> Roku</span></ng-template>
             <ng-template #crossroku><span class="times"><i class="fa fa-times"></i> Roku</span></ng-template>
 
-            <div *ngIf="AppleTvHasChannels.length > 0; then checkappletv else crossappletv"></div>
+            <div *ngIf="AppleTvHasFeatures.length > 0; then checkappletv else crossappletv"></div>
             <ng-template #checkappletv><span><i class="fa fa-check"></i> Apple TV</span></ng-template>
             <ng-template #crossappletv><span class="times"><i class="fa fa-times"></i> Apple TV</span></ng-template>
-        </div> -->
+        </div>
 
         <button *ngIf="!noFeatureResults" type="button" class="btn viewdetailsbutton" (click)="onClickDetails()">
             {{ viewDetailsButtonText }}
         </button>
 
         <section class="results">
-              <div *ngIf="noFeatureResults && countChecked > 0" class="alert alert-danger">
-                  <span>There are no Devices with your chosen features.</span>
-              </div>
-
               <div id="collapseExample" [ngbCollapse]="isCollapsed">
                   <div id="details">
                       <div id="results">
@@ -77,7 +80,13 @@
     </div>
   </section>
 
-
+<section>
+  <div class="container">
+      <div *ngIf="noFeatureResults && countChecked > 0" class="alert alert-danger">
+          <span>There are no streaming devices with these features.</span>
+      </div>
+  </div>
+</section>
 
 
 
@@ -86,42 +95,41 @@
 
 
 <section class="channels-and-features">
+  <ngb-tabset justify="center">
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+            <div (click)="channelsTabClick()">By Channels</div>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <ul class="channels">
+                <li *ngFor="let c of allDeviceChannels; let index = index">
+                  <input type="checkbox" [id]="c" (change)="onChannelClick($event, c, index)">
+                  <label placement="top" ngbTooltip="{{ c }}" class="channelicon"
+                    [for]="c"
+                    [ngStyle]="{'background-image': 'url(assets/logos/' + c + '.png)'}">
+                  </label>
+                </li>
+            </ul>
+        </ng-template>
+      </ngb-tab>
 
-<ngb-tabset justify="center">
-    <ngb-tab>
-      <ng-template ngbTabTitle>
-          <div (click)="channelsTabClick()">By Channels</div>
-      </ng-template>
-      <ng-template ngbTabContent>
-          <ul class="channels">
-              <li *ngFor="let c of allDeviceChannels; let index = index">
-                <input type="checkbox" [id]="c" (change)="onChannelClick($event, c, index)">
-                <label placement="top" ngbTooltip="{{ c }}" class="channelicon"
-                  [for]="c"
-                  [ngStyle]="{'background-image': 'url(assets/logos/' + c + '.png)'}">
-                </label>
-              </li>
-          </ul>
-      </ng-template>
-    </ngb-tab>
-
-    <ngb-tab>
-      <ng-template ngbTabTitle>
-          <div (click)="featuresTabClick()">By Features</div>
-      </ng-template>
-      <ng-template ngbTabContent>
-          <div class="features">
-              <div *ngFor="let f of allDeviceFeatures; let index = index">
-                <label [for]="f.key">
-                    <input name="feature" type="checkbox" [id]="f.key" (change)="onFeatureClick($event, f, index)">
-                    {{ f.status }}
-                </label>
+      <ngb-tab>
+        <ng-template ngbTabTitle>
+            <div (click)="featuresTabClick()">By Features</div>
+        </ng-template>
+        <ng-template ngbTabContent>
+            <div class="features">
+                <div *ngFor="let f of allDeviceFeatures; let index = index">
+                  <label [for]="f.key">
+                      <input name="feature" type="checkbox" [id]="f.key" (change)="onFeatureClick($event, f, index)">
+                      {{ f.status }}
+                  </label>
+                </div>
               </div>
-            </div>
-      </ng-template>
-    </ngb-tab>
+        </ng-template>
+      </ngb-tab>
 
-  </ngb-tabset>
+    </ngb-tabset>
 
 
 
