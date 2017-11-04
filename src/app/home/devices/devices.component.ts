@@ -58,23 +58,34 @@ export class DevicesComponent implements OnInit {
       private devicesService: DevicesService,
       public modalService: NgbModal) {
 
-
-      this.allDeviceChannels = this.devicesService.getAllChannels2();
+      this.allDeviceChannels = this.devicesService.getAllChannels();
 
       // get all features and features for each device
       this.allDeviceFeatures = this.devicesService.getAllFeatures();
       this.allAppleTvFeatures = this.devicesService.getDeviceFeatures('Apple TV');
       this.allRokuFeatures = this.devicesService.getDeviceFeatures('Roku');
 
-      this.devicesService.getAllChannels();
-      this.allAppleTvChannels = this.devicesService.getAppleTvChannels();
-      this.allRokuChannels = this.devicesService.getRokuChannels();
+      // get the channels that each device supports (also includes status)
+      this.allAppleTvChannels = this.devicesService.getDeviceChannels('Apple TV');
+      this.allRokuChannels = this.devicesService.getDeviceChannels('Roku');
   }
 
 
 
   ngOnInit() {
 
+  }
+
+  channelsTabClick() {
+    // clear features from Features tab
+    this.clearFeatures();
+    this.selectedFeatures = [];
+  }
+
+  featuresTabClick() {
+    // clear channels from Channels tab
+    this.clearChannels();
+    this.selectedChannels = [];
   }
 
   onChannelClick(event, channel, index) {
@@ -143,6 +154,7 @@ export class DevicesComponent implements OnInit {
 
 
   filterChannels(){
+    console.log(this.RokuHasChannels.length);
     this.selectedChannels.forEach((current, index) => {
 
       for (let channel of this.allRokuChannels) {
@@ -156,6 +168,7 @@ export class DevicesComponent implements OnInit {
         }
       }
     })
+    //console.log(this.RokuHasChannels.length);
 
     if (this.selectedChannels.length > this.RokuHasChannels.length) {
       this.RokuHasChannels = [];

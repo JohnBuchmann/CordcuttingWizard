@@ -27,7 +27,7 @@ export class DevicesService {
       private af: AngularFireDatabase ) {}
 
 
-  getAllChannels2() {
+  getAllChannels() {
       let channels = [];
       this.af.list('/device_channels/', {
         preserveSnapshot: true
@@ -47,40 +47,19 @@ export class DevicesService {
   }
 
 
-
-  getAllChannels() {
-    // if (!this.downloaded) {
-
-      let AllChannels = [];
-      if (this.RokuChannels.length == 0) {
-      this.af.list('/devices/Roku/Channels')
+  getDeviceChannels(device) {
+      let channels = [];
+      this.af.list('/devices/' + device + '/Channels')
         .subscribe(
           res => {
             res.forEach(
               (val, index) => {
-                this.RokuChannelsAndStatus.push({name: val.$key, status: val.$value});
+                channels.push({name: val.$key, status: val.$value});
               }
             )
           }
         )
-      }
-
-        if (this.AppleTvChannels.length == 0) {
-          this.af.list('/devices/Apple TV/Channels')
-          .subscribe(
-            res => {
-                res.forEach(
-                  (val, index) => {
-                      this.AppleTvChannelsAndStatus.push({name: val.$key, status: val.$value});
-                  }
-                )
-            }
-          )
-        }
-
-
-    // }
-
+      return channels;
   }
 
 
@@ -118,13 +97,13 @@ export class DevicesService {
   }
 
 
-  getRokuChannels() {
-    return this.RokuChannelsAndStatus;
-  }
+  // getRokuChannels() {
+  //   return this.RokuChannelsAndStatus;
+  // }
 
-  getAppleTvChannels() {
-    return this.AppleTvChannelsAndStatus;
-  }
+  // getAppleTvChannels() {
+  //   return this.AppleTvChannelsAndStatus;
+  // }
 
 
 

@@ -85,10 +85,13 @@
 
 
 
-
 <section class="channels-and-features">
+
 <ngb-tabset justify="center">
-    <ngb-tab title="By Channels">
+    <ngb-tab>
+      <ng-template ngbTabTitle>
+          <div (click)="channelsTabClick()">By Channels</div>
+      </ng-template>
       <ng-template ngbTabContent>
           <ul class="channels">
               <li *ngFor="let c of allDeviceChannels; let index = index">
@@ -102,7 +105,10 @@
       </ng-template>
     </ngb-tab>
 
-    <ngb-tab title="By Features">
+    <ngb-tab>
+      <ng-template ngbTabTitle>
+          <div (click)="featuresTabClick()">By Features</div>
+      </ng-template>
       <ng-template ngbTabContent>
           <div class="features">
               <div *ngFor="let f of allDeviceFeatures; let index = index">
