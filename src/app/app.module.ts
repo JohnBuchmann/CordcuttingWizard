@@ -19,6 +19,7 @@ import { ServicesService } from './services/services.service';
 import { DevicesService } from "./services/devices.service";
 import { MessageService } from './services/message.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -56,6 +57,7 @@ import { DeviceResultsComponent } from './home/devices/device-results/device-res
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,

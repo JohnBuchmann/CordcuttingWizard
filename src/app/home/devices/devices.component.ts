@@ -1,5 +1,6 @@
 import { CURRENT_PLATFORM } from 'preboot/test/e2e/e2e.app';
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Device } from './../../models/device.model';
 import { DevicesService } from './../../services/devices.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -13,10 +14,39 @@ declare var jQuery: any;
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
-  styleUrls: ['./devices.component.css']
+  styleUrls: ['./devices.component.css'],
+  animations: [
+    trigger('collapse', [
+      state('collapsed', style({
+        'height': '0px'
+      })),
+      state('expanded', style({
+        'height': '*'
+      })),
+      transition('collapsed => expanded', animate(300)),
+      transition('expanded => collapsed', animate(300))
+    ]),
+
+    trigger(
+      'animateQuickResults', [
+        transition(':enter', [
+          style({ transform: 'translateX(-100%)', opacity: 0 }),
+          animate('300ms',
+          style({ transform: 'translateX(0)', opacity: 1 }))
+        ]),
+        transition(':leave', [
+          style({ transform: 'translateX(0)', opacity: 1 }),
+          animate('300ms',
+          style({ transform: 'translateX(100%)', opacity: 0 }))
+        ])
+      ]
+    )
+  ]
 })
 export class DevicesComponent implements OnInit {
+  state = 'collapsed';
 
+  whichTab = "channels"; // or "features"
   isCollapsed = true;
   viewDetailsButtonText = 'View Details';
 
@@ -76,16 +106,26 @@ export class DevicesComponent implements OnInit {
 
   }
 
+  // onCollapse() {
+  //   this.state == 'collapsed' ? this.state = 'expanded' : this.state = 'collapsed';
+  // }
+
   channelsTabClick() {
-    // clear features from Features tab
+    // clear and reset stuff
     this.clearFeatures();
     this.selectedFeatures = [];
+    this.whichTab = "channels";
+    this.countChecked = 0;
+    this.noFeatureResults = true;
   }
 
   featuresTabClick() {
-    // clear channels from Channels tab
+    // clear and reset stuff
     this.clearChannels();
     this.selectedChannels = [];
+    this.whichTab = "features";
+    this.countChecked = 0;
+    this.noChannelResults = true;
   }
 
   onChannelClick(event, channel, index) {
@@ -154,7 +194,6 @@ export class DevicesComponent implements OnInit {
 
 
   filterChannels(){
-    console.log(this.RokuHasChannels.length);
     this.selectedChannels.forEach((current, index) => {
 
       for (let channel of this.allRokuChannels) {
@@ -168,7 +207,6 @@ export class DevicesComponent implements OnInit {
         }
       }
     })
-    //console.log(this.RokuHasChannels.length);
 
     if (this.selectedChannels.length > this.RokuHasChannels.length) {
       this.RokuHasChannels = [];
@@ -238,6 +276,7 @@ export class DevicesComponent implements OnInit {
 
 
 onClickDetails() {
+  this.state == 'collapsed' ? this.state = 'expanded' : this.state = 'collapsed';
     this.isCollapsed = !this.isCollapsed;
     if (this.isCollapsed) {
       this.viewDetailsButtonText = 'View Details';

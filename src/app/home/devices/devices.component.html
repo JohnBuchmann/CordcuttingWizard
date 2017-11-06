@@ -1,5 +1,5 @@
 
-<section *ngIf="!noChannelResults" class="quickresults">
+<section *ngIf="!noChannelResults" class="quickresults" [@animateQuickResults]>
   <div class="container">
       <div class="quickresults-wrapper">
           <div *ngIf="RokuHasChannels.length > 0; then checkroku else crossroku"></div>
@@ -15,11 +15,10 @@
           {{ viewDetailsButtonText }}
       </button>
 
-      <section class="results">
-        <div id="collapseExample" [ngbCollapse]="isCollapsed">
+      <section *ngIf="!noChannelResults" class="results">
+        <div [@collapse]="state">
             <div id="details">
-                <div id="results" *ngIf="!noChannelResults">
-
+                <div id="results">
                     <div class="card" *ngIf="RokuHasChannels.length > 0">
                         <app-device-results  [itemsArray]="RokuHasChannels" [deviceName]="RokuName"></app-device-results>
                     </div>
@@ -34,9 +33,9 @@
   </div>
 </section>
 
-<section>
-    <div class="container">
-        <div *ngIf="noChannelResults && countChecked > 0" class="alert alert-danger">
+<section *ngIf="noChannelResults && countChecked > 0 && whichTab == 'channels'">
+    <div class="container aaa">
+        <div class="alert alert-danger">
             <span>There are no streaming devices with these channels.</span>
         </div>
     </div>
@@ -47,7 +46,7 @@
 
 
 
-<section *ngIf="!noFeatureResults" class="quickresults">
+<section *ngIf="!noFeatureResults" class="quickresults" [@animateQuickResults]>
     <div class="container">
         <div class="quickresults-wrapper">
             <div *ngIf="RokuHasFeatures.length > 0; then checkroku else crossroku"></div>
@@ -64,7 +63,7 @@
         </button>
 
         <section class="results">
-              <div id="collapseExample" [ngbCollapse]="isCollapsed">
+              <div [@collapse]="state">
                   <div id="details">
                       <div id="results">
                           <div class="card" *ngIf="RokuHasFeatures.length > 0">
@@ -80,9 +79,9 @@
     </div>
   </section>
 
-<section>
+<section *ngIf="noFeatureResults && countChecked > 0 && whichTab == 'features'">
   <div class="container">
-      <div *ngIf="noFeatureResults && countChecked > 0" class="alert alert-danger">
+      <div class="alert alert-danger">
           <span>There are no streaming devices with these features.</span>
       </div>
   </div>
@@ -131,6 +130,5 @@
 
     </ngb-tabset>
 
-
-
 </section>
+
