@@ -1,0 +1,23 @@
+/* Styles in component CSS doesn't affect any ng-bootstrap component. Put styles here instead */
+
+/* Device tabs */
+
+.tab-pane {
+  padding-top: 30px;
+}
+
+.nav-tabs { border-bottom: none;}
+
+.nav-tabs .nav-link {
+  color: #3C3C3C;
+  border: none;
+  font-size: 1.5rem;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: none;
+  border-bottom: 2px solid #fe7d00;
+
+}
+
+

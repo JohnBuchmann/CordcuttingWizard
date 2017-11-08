@@ -21,21 +21,21 @@
                         <label for="image">Features</label>
                         <select class="form-control" name="features" id="">
                           <option value="0">Choose one</option>
-                          <option *ngFor="let feature of DeviceFeatures" [value]="feature.id">{{feature.value}}</option>
+                          <option> </option>
                         </select>
 
                     </div>
 
                     <div class="form-check">
 
-                        <label *ngFor="let channel of DeviceChannels" class="form-check-label">
+                        <label class="form-check-label">
                         <input
                           type="checkbox"
                           class="form-check-input"
                           name="channel"
-                          [value]="channel"
+
                           >
-                          {{ channel }}
+
                         </label>
 
                     </div>

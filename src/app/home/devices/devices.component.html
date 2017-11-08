@@ -97,38 +97,45 @@
   <ngb-tabset justify="center">
       <ngb-tab>
         <ng-template ngbTabTitle>
-            <div (click)="channelsTabClick()">By Channels</div>
+            <div (click)="channelsTabClick()">By Apps</div>
         </ng-template>
-        <ng-template ngbTabContent>
-            <ul class="channels">
-                <li *ngFor="let c of allDeviceChannels; let index = index">
-                  <input type="checkbox" [id]="c" (change)="onChannelClick($event, c, index)">
-                  <label placement="top" ngbTooltip="{{ c }}" class="channelicon"
-                    [for]="c"
-                    [ngStyle]="{'background-image': 'url(assets/logos/' + c + '.png)'}">
-                  </label>
-                </li>
-            </ul>
-        </ng-template>
+            <ng-template ngbTabContent>
+                <ul class="channels">
+                    <li *ngFor="let c of allDeviceChannels; let index = index">
+                      <input type="checkbox" [id]="c" (change)="onChannelClick($event, c, index)">
+                      <label placement="top" ngbTooltip="{{ c | removeUnderscore }}" class="channelicon"
+                        [for]="c"
+                        [ngStyle]="{'background-image': 'url(assets/logos/' + c + '.png)'}">
+                      </label>
+                    </li>
+                </ul>
+            </ng-template>
       </ngb-tab>
 
       <ngb-tab>
         <ng-template ngbTabTitle>
             <div (click)="featuresTabClick()">By Features</div>
         </ng-template>
-        <ng-template ngbTabContent>
-            <div class="features">
-                <div *ngFor="let f of allDeviceFeatures; let index = index">
-                  <label [for]="f.key">
-                      <input name="feature" type="checkbox" [id]="f.key" (change)="onFeatureClick($event, f, index)">
-                      {{ f.status }}
-                  </label>
-                </div>
-              </div>
-        </ng-template>
+            <ng-template ngbTabContent>
+                <div id="features" class="container">
+                  <div class="row">
+                      <div *ngFor="let f of allDeviceFeatures; let index = index" class="col-lg-3 col-md-4 col-sm-6">
+                        <label [for]="f.key" class="switch">
+                            <input name="feature" type="checkbox" [id]="f.key" (change)="onFeatureClick($event, f, index)">
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="feature-name">{{ f.status }}</span>
+                    </div>
+                  </div>
+                  </div>
+            </ng-template>
       </ngb-tab>
 
     </ngb-tabset>
 
 </section>
+
+
+
+
 

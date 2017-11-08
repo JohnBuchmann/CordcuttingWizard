@@ -16,27 +16,28 @@ var DATA = {
     projectId: "test-ab93c",
     storageBucket: "test-ab93c.appspot.com",
     messagingSenderId: "993594080145"
-  },
-  "DeviceFeatures": [
-    {
-      'id': 1,
-      'value': '4k video'
-    },
-    {
-      'id': 2,
-      'value': 'Includes a remote control'
-    },
-    {
-      'id': 3,
-      'value': 'Some other cool feature'
-    }
-  ],
-  "DeviceChannels": [
-    "ABC",
-    "CBS",
-    "FOX",
-    "NBC"
-  ]
+  }
+  // ,
+  // "DeviceFeatures": [
+  //   {
+  //     'id': 1,
+  //     'value': '4k video'
+  //   },
+  //   {
+  //     'id': 2,
+  //     'value': 'Includes a remote control'
+  //   },
+  //   {
+  //     'id': 3,
+  //     'value': 'Some other cool feature'
+  //   }
+  // ],
+  // "DeviceChannels": [
+  //   "ABC",
+  //   "CBS",
+  //   "FOX",
+  //   "NBC"
+  // ]
 }
 
 export default DATA;

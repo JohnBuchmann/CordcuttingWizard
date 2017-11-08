@@ -34,6 +34,7 @@ import { DeviceFormComponent } from './admin/device-manager/device-form/device-f
 import { DeviceManagerComponent } from './admin/device-manager/device-manager.component';
 import { ServicesComponent } from './home/services/services.component';
 import { DeviceResultsComponent } from './home/devices/device-results/device-results.component';
+import { RemoveUnderscorePipe } from './pipes/remove-underscore.pipe';
 
 
 
@@ -53,7 +54,8 @@ import { DeviceResultsComponent } from './home/devices/device-results/device-res
     DeviceManagerComponent,
     ServicesComponent,
     DevicesComponent,
-    DeviceResultsComponent
+    DeviceResultsComponent,
+    RemoveUnderscorePipe
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import DATA  from './../../../config/config';
-import { YOUTUBE_LOGO, HULU_LOGO, SLING_LOGO, DIRECTTV_LOGO, VUE_LOGO, FUBO_LOGO } from './../../../config/config';
-import DEVICE_FEATURES from './../../../config/config';
+// import DATA  from './../../../config/config';
+// import { YOUTUBE_LOGO, HULU_LOGO, SLING_LOGO, DIRECTTV_LOGO, VUE_LOGO, FUBO_LOGO } from './../../../config/config';
+// import DEVICE_FEATURES from './../../../config/config';
 
 @Component({
   selector: 'app-device-form',
@@ -18,8 +18,8 @@ export class DeviceFormComponent implements OnInit {
 
   ngOnInit() {
 
-    this.DeviceFeatures = DATA.DeviceFeatures;
-    this.DeviceChannels = DATA.DeviceChannels;
+    // this.DeviceFeatures = DATA.DeviceFeatures;
+    // this.DeviceChannels = DATA.DeviceChannels;
 
     }
 
