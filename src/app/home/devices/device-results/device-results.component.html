@@ -1,14 +1,22 @@
+<img class="img-fluid devicelogo" [src]="deviceLogo" alt="{{ deviceName }}">
 <div *ngIf="itemsArray" class="card-block">
-    <h3>{{ deviceName }}</h3>
     <div *ngFor="let item of itemsArray">
-        <div class="media">
+        <div *ngIf="!item.featureName"  class="media">
             <img class="channellogo mr-2" src='/assets/logos/{{item.name}}.png' alt="">
             <div class="media-body">
                 <p *ngIf="item.status === 'Yes'">Comes Standard</p>
                 <p *ngIf="item.status !== 'Yes'">{{ item.status }}</p>
             </div>
         </div>
-      </div>
+
+        <dl *ngIf="item.featureName">
+            <dt>{{ item.featureName }}</dt>
+            <dd>
+                <p *ngIf="item.status === 'Yes'">Comes Standard</p>
+                <p *ngIf="item.status !== 'Yes'">{{ item.status }}</p>
+            </dd>
+        </dl>
+    </div>
 </div>
 
 

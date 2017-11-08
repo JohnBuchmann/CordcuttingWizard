@@ -4,12 +4,9 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 import { Device } from './../../models/device.model';
 import { DevicesService } from './../../services/devices.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-
 import { Observable } from 'rxjs/Observable';
 
-
-
-declare var jQuery: any;
+import {APPLETV_LOGO, ROKU_LOGO, CHROMECAST_LOGO, AMAZONFIRE_LOGO, NVIDIASHIELD_LOGO } from './../../config/config';
 
 @Component({
   selector: 'app-devices',
@@ -45,6 +42,13 @@ declare var jQuery: any;
 })
 export class DevicesComponent implements OnInit {
   state = 'collapsed';
+
+  appletvLogo = APPLETV_LOGO;
+  rokuLogo = ROKU_LOGO;
+  chromecastLogo = CHROMECAST_LOGO;
+  amazonfireLogo = AMAZONFIRE_LOGO;
+  nvidiashieldLogo = NVIDIASHIELD_LOGO;
+
 
   whichTab = "channels"; // or "features"
   isCollapsed = true;
@@ -228,12 +232,13 @@ export class DevicesComponent implements OnInit {
 
             for (let feature of this.allAppleTvFeatures) {
               if (feature.key === current.key) {
-                this.AppleTvHasFeatures.push({key: feature.key, status: feature.status});
+                this.AppleTvHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
               }
             }
+
             for (let feature of this.allRokuFeatures) {
               if (feature.key === current.key) {
-                this.RokuHasFeatures.push({key: feature.key, status: feature.status});
+                this.RokuHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
               }
             }
           }

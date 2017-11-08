@@ -2,3 +2,12 @@ img.channellogo {
   width: 30px;
   height: 30px;
 }
+
+
+dt {
+  font-size: 1rem;
+}
+
+dd {
+  font-size: .8rem;
+}

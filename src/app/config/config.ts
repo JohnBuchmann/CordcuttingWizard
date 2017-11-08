@@ -7,6 +7,12 @@ export const DIRECTTV_LOGO = 'assets/directtv.png';
 export const VUE_LOGO = 'assets/vue.png';
 export const FUBO_LOGO = 'assets/fubo.png';
 
+export const APPLETV_LOGO = 'assets/appletv.png';
+export const ROKU_LOGO = 'assets/roku.png';
+export const CHROMECAST_LOGO = 'assets/chromecast.png';
+export const AMAZONFIRE_LOGO = 'assets/amazonfire.png';
+export const NVIDIASHIELD_LOGO = 'assets/nvidiashield.png';
+
 
 var DATA = {
   "firestore": {

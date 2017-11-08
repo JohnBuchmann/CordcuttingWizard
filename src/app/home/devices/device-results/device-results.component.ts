@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DeviceResultsComponent implements OnInit {
   @Input() itemsArray;
-  // @Input() deviceLogo;
+  @Input() deviceLogo;
   @Input() deviceName;
 
   constructor() { }
