@@ -1,14 +1,35 @@
+<section class="intro-text">
+  <div class="container">
+      <h2>Apple TV <span class="vs">vs</span> Roku <span class="vs">vs</span> Chromecast <span class="vs">vs</span> Amazon Fire <span class="vs">vs</span> nVidia Shield</h2>
+      <p>Which streaming device is right for you? Find out now by choosing the apps or features that you need.</p>
+  </div>
+</section>
 
 <section *ngIf="!noChannelResults" class="quickresults" [@animateQuickResults]>
   <div class="container">
+
+
+
       <div class="quickresults-wrapper">
+          <div *ngIf="AppleTvHasChannels.length > 0; then checkappletv else crossappletv"></div>
+          <ng-template #checkappletv><span><i class="fa fa-check"></i> Apple TV</span></ng-template>
+          <ng-template #crossappletv><span class="times"><i class="fa fa-times"></i> Apple TV</span></ng-template>
+
           <div *ngIf="RokuHasChannels.length > 0; then checkroku else crossroku"></div>
           <ng-template #checkroku><span><i class="fa fa-check"></i> Roku</span></ng-template>
           <ng-template #crossroku><span class="times"><i class="fa fa-times"></i> Roku</span></ng-template>
 
-          <div *ngIf="AppleTvHasChannels.length > 0; then checkappletv else crossappletv"></div>
-          <ng-template #checkappletv><span><i class="fa fa-check"></i> Apple TV</span></ng-template>
-          <ng-template #crossappletv><span class="times"><i class="fa fa-times"></i> Apple TV</span></ng-template>
+          <div *ngIf="ChromecastHasChannels.length > 0; then checkchromecast else crosschromecast"></div>
+          <ng-template #checkchromecast><span><i class="fa fa-check"></i> Chromecast</span></ng-template>
+          <ng-template #crosschromecast><span class="times"><i class="fa fa-times"></i> Chromecast</span></ng-template>
+
+          <div *ngIf="AmazonFireHasChannels.length > 0; then checkamazonfire else crossamazonfire"></div>
+          <ng-template #checkamazonfire><span><i class="fa fa-check"></i> Amazon Fire</span></ng-template>
+          <ng-template #crossamazonfire><span class="times"><i class="fa fa-times"></i> Amazon Fire</span></ng-template>
+
+          <div *ngIf="NvidiaShieldHasChannels.length > 0; then checknvidiashield else crossnvidiashield"></div>
+          <ng-template #checknvidiashield><span><i class="fa fa-check"></i> nVidia Shield</span></ng-template>
+          <ng-template #crossnvidiashield><span class="times"><i class="fa fa-times"></i> nVidia Shield</span></ng-template>
       </div>
 
       <button *ngIf="!noChannelResults" type="button" class="btn viewdetailsbutton" (click)="onClickDetails()">
@@ -19,12 +40,24 @@
         <div [@collapse]="state">
             <div id="details">
                 <div id="results">
-                    <div class="card" *ngIf="RokuHasChannels.length > 0">
-                        <app-device-results  [itemsArray]="RokuHasChannels" [deviceName]="RokuName"></app-device-results>
+                    <div class="card" *ngIf="AppleTvHasChannels.length > 0">
+                        <app-device-results  [itemsArray]="AppleTvHasChannels" [deviceLogo]="appletvLogo" [deviceName]="'Apple TV'"></app-device-results>
                     </div>
 
-                    <div class="card" *ngIf="AppleTvHasChannels.length > 0">
-                        <app-device-results  [itemsArray]="AppleTvHasChannels" [deviceName]="AppleTvName"></app-device-results>
+                    <div class="card" *ngIf="RokuHasChannels.length > 0">
+                        <app-device-results  [itemsArray]="RokuHasChannels" [deviceLogo]="rokuLogo" [deviceName]="'Roku'"></app-device-results>
+                    </div>
+
+                    <div class="card" *ngIf="ChromecastHasChannels.length > 0">
+                        <app-device-results  [itemsArray]="ChromecastHasChannels" [deviceLogo]="chromecastLogo" [deviceName]="'Chromecast'"></app-device-results>
+                    </div>
+
+                    <div class="card" *ngIf="AmazonFireHasChannels.length > 0">
+                        <app-device-results  [itemsArray]="AmazonFireHasChannels" [deviceLogo]="amazonfireLogo" [deviceName]="'Amazon Fire'"></app-device-results>
+                    </div>
+
+                    <div class="card" *ngIf="NvidiaShieldHasChannels.length > 0">
+                        <app-device-results  [itemsArray]="NvidiaShieldHasChannels" [deviceLogo]="nvidiashieldLogo" [deviceName]="'nVidia Shield'"></app-device-results>
                     </div>
                 </div>
               </div>
@@ -49,13 +82,26 @@
 <section *ngIf="!noFeatureResults" class="quickresults" [@animateQuickResults]>
     <div class="container">
         <div class="quickresults-wrapper">
+            <div *ngIf="AppleTvHasFeatures.length > 0; then checkappletv else crossappletv"></div>
+            <ng-template #checkappletv><span><i class="fa fa-check"></i> Apple TV</span></ng-template>
+            <ng-template #crossappletv><span class="times"><i class="fa fa-times"></i> Apple TV</span></ng-template>
+
             <div *ngIf="RokuHasFeatures.length > 0; then checkroku else crossroku"></div>
             <ng-template #checkroku><span><i class="fa fa-check"></i> Roku</span></ng-template>
             <ng-template #crossroku><span class="times"><i class="fa fa-times"></i> Roku</span></ng-template>
 
-            <div *ngIf="AppleTvHasFeatures.length > 0; then checkappletv else crossappletv"></div>
-            <ng-template #checkappletv><span><i class="fa fa-check"></i> Apple TV</span></ng-template>
-            <ng-template #crossappletv><span class="times"><i class="fa fa-times"></i> Apple TV</span></ng-template>
+            <div *ngIf="ChromecastHasFeatures.length > 0; then checkchromecast else crosschromecast"></div>
+            <ng-template #checkchromecast><span><i class="fa fa-check"></i> Chromecast</span></ng-template>
+            <ng-template #crosschromecast><span class="times"><i class="fa fa-times"></i> Chromecast</span></ng-template>
+
+            <div *ngIf="AmazonFireHasFeatures.length > 0; then checkamazonfire else crossamazonfire"></div>
+            <ng-template #checkamazonfire><span><i class="fa fa-check"></i> Amazon Fire</span></ng-template>
+            <ng-template #crossamazonfire><span class="times"><i class="fa fa-times"></i> Amazon Fire</span></ng-template>
+
+            <div *ngIf="NvidiaShieldHasFeatures.length > 0; then checknvidiashield else crossnvidiashield"></div>
+            <ng-template #checknvidiashield><span><i class="fa fa-check"></i> nVidia Shield</span></ng-template>
+            <ng-template #crossnvidiashield><span class="times"><i class="fa fa-times"></i> nVidia Shield</span></ng-template>
+
         </div>
 
         <button *ngIf="!noFeatureResults" type="button" class="btn viewdetailsbutton" (click)="onClickDetails()">
@@ -66,11 +112,24 @@
               <div [@collapse]="state">
                   <div id="details">
                       <div id="results">
-                          <div class="card" *ngIf="RokuHasFeatures.length > 0">
-                              <app-device-results  [itemsArray]="RokuHasFeatures" [deviceLogo]="rokuLogo" [deviceName]="RokuName"></app-device-results>
-                          </div>
                           <div class="card" *ngIf="AppleTvHasFeatures.length > 0">
-                              <app-device-results  [itemsArray]="AppleTvHasFeatures" [deviceLogo]="appletvLogo" [deviceName]="AppleTvName"></app-device-results>
+                              <app-device-results  [itemsArray]="AppleTvHasFeatures" [deviceLogo]="appletvLogo" [deviceName]="'Apple TV'"></app-device-results>
+                          </div>
+
+                          <div class="card" *ngIf="RokuHasFeatures.length > 0">
+                              <app-device-results  [itemsArray]="RokuHasFeatures" [deviceLogo]="rokuLogo" [deviceName]="'Roku'"></app-device-results>
+                          </div>
+
+                          <div class="card" *ngIf="ChromecastHasFeatures.length > 0">
+                              <app-device-results  [itemsArray]="ChromecastHasFeatures" [deviceLogo]="chromecastLogo" [deviceName]="'Chromecast'"></app-device-results>
+                          </div>
+
+                          <div class="card" *ngIf="AmazonFireHasFeatures.length > 0">
+                              <app-device-results  [itemsArray]="AmazonFireHasFeatures" [deviceLogo]="amazonfireLogo" [deviceName]="'Amazon Fire'"></app-device-results>
+                          </div>
+
+                          <div class="card" *ngIf="NvidiaShieldHasFeatures.length > 0">
+                              <app-device-results  [itemsArray]="NvidiaShieldHasFeatures" [deviceLogo]="nvidiashieldLogo" [deviceName]="'nVidia Shield'"></app-device-results>
                           </div>
                       </div>
                 </div>

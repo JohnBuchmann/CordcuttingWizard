@@ -4,7 +4,6 @@
         <div class="container">
 
 
-
             <div class="allservices">
                 <img class="img-responsive" src="assets/directtv.png">
                 <img class="img-responsive" src="assets/sling.png">
@@ -84,34 +83,29 @@
         <div id="details">
             <div id="results" *ngIf="!noResults">
 
-            <div class="card" *ngIf="hulu.length > 0">
-                <app-service-results  [device]="hulu" [deviceLogo]="huluLogo" [deviceName]="huluName"></app-service-results>
-            </div>
+              <div class="card" *ngIf="hulu.length > 0">
+                  <app-service-results  [device]="hulu" [deviceLogo]="huluLogo" [deviceName]="huluName"></app-service-results>
+              </div>
 
+              <div class="card" *ngIf="sling.length > 0">
+                  <app-service-results  [device]="sling" [deviceLogo]="slingLogo"  [deviceName]="slingName"></app-service-results>
+              </div>
 
-            <div class="card" *ngIf="sling.length > 0">
-                <app-service-results  [device]="sling" [deviceLogo]="slingLogo"  [deviceName]="slingName"></app-service-results>
-            </div>
+              <div class="card" *ngIf="youtube.length > 0">
+                  <app-service-results  [device]="youtube" [deviceLogo]="youtubeLogo"  [deviceName]="youtubeName"></app-service-results>
+              </div>
 
+              <div class="card" *ngIf="directtv.length > 0">
+                  <app-service-results  [device]="directtv" [deviceLogo]="directtvLogo" [deviceName]="directtvName"></app-service-results>
+              </div>
 
-            <div class="card" *ngIf="youtube.length > 0">
-                <app-service-results  [device]="youtube" [deviceLogo]="youtubeLogo"  [deviceName]="youtubeName"></app-service-results>
-            </div>
+              <div class="card" *ngIf="vue.length > 0">
+                  <app-service-results  [device]="vue" [deviceLogo]="vueLogo" [deviceName]="vueName"></app-service-results>
+              </div>
 
-
-            <div class="card" *ngIf="directtv.length > 0">
-                <app-service-results  [device]="directtv" [deviceLogo]="directtvLogo" [deviceName]="directtvName"></app-service-results>
-            </div>
-
-
-            <div class="card" *ngIf="vue.length > 0">
-                <app-service-results  [device]="vue" [deviceLogo]="vueLogo" [deviceName]="vueName"></app-service-results>
-            </div>
-
-
-            <div class="card" *ngIf="fubo.length > 0">
-                <app-service-results  [device]="fubo" [deviceLogo]="fuboLogo" [deviceName]="fuboName"></app-service-results>
-            </div>
+              <div class="card" *ngIf="fubo.length > 0">
+                  <app-service-results  [device]="fubo" [deviceLogo]="fuboLogo" [deviceName]="fuboName"></app-service-results>
+              </div>
 
             </div>
       </div>

@@ -60,33 +60,35 @@ export class DevicesComponent implements OnInit {
 
   allAppleTvChannels = [];
   allRokuChannels = [];
+  allChromecastChannels = [];
+  allAmazonFireChannels = [];
+  allNvidiaShieldChannels = [];
 
-  allRokuFeatures = [];
   allAppleTvFeatures = [];
-
-
+  allRokuFeatures = [];
+  allChromecastFeatures = [];
+  allAmazonFireFeatures = [];
+  allNvidiaShieldFeatures = [];
 
   selectedChannels = [];
   selectedFeatures = [];
-
 
   noChannelResults = true;
   noFeatureResults = true;
   countChecked = 0;
 
-
-
   AppleTvHasChannels = [];
   RokuHasChannels = [];
+  ChromecastHasChannels = [];
+  AmazonFireHasChannels = [];
+  NvidiaShieldHasChannels = [];
 
   AppleTvHasFeatures = [];
   RokuHasFeatures = [];
+  ChromecastHasFeatures = [];
+  AmazonFireHasFeatures = [];
+  NvidiaShieldHasFeatures = [];
 
-
-
-  AppleTvName = 'Apple TV';
-  ChromecastName = 'Chromecast';
-  RokuName = 'Roku';
 
   constructor(
       private devicesService: DevicesService,
@@ -98,10 +100,16 @@ export class DevicesComponent implements OnInit {
       this.allDeviceFeatures = this.devicesService.getAllFeatures();
       this.allAppleTvFeatures = this.devicesService.getDeviceFeatures('Apple TV');
       this.allRokuFeatures = this.devicesService.getDeviceFeatures('Roku');
+      this.allChromecastFeatures = this.devicesService.getDeviceFeatures('Chromecast');
+      this.allAmazonFireFeatures = this.devicesService.getDeviceFeatures('Amazon Fire');
+      this.allNvidiaShieldFeatures = this.devicesService.getDeviceFeatures('nVidia Shield');
 
       // get the channels that each device supports (also includes status)
       this.allAppleTvChannels = this.devicesService.getDeviceChannels('Apple TV');
       this.allRokuChannels = this.devicesService.getDeviceChannels('Roku');
+      this.allChromecastChannels = this.devicesService.getDeviceChannels('Chromecast');
+      this.allAmazonFireChannels = this.devicesService.getDeviceChannels('Amazon Fire');
+      this.allNvidiaShieldChannels = this.devicesService.getDeviceChannels('nVidia Shield');
   }
 
 
@@ -109,10 +117,6 @@ export class DevicesComponent implements OnInit {
   ngOnInit() {
 
   }
-
-  // onCollapse() {
-  //   this.state == 'collapsed' ? this.state = 'expanded' : this.state = 'collapsed';
-  // }
 
   channelsTabClick() {
     // clear and reset stuff
@@ -133,9 +137,7 @@ export class DevicesComponent implements OnInit {
   }
 
   onChannelClick(event, channel, index) {
-
     const isChecked = event.target.checked;
-
     if (isChecked) {
       const myPromise = new Promise((resolve, reject) => {
         this.selectedChannels.push(channel);
@@ -189,35 +191,72 @@ export class DevicesComponent implements OnInit {
   clearChannels() {
     this.AppleTvHasChannels = [];
     this.RokuHasChannels = [];
+    this.ChromecastHasChannels = [];
+    this.AmazonFireHasChannels = [];
+    this.NvidiaShieldHasChannels = [];
   }
 
   clearFeatures() {
     this.AppleTvHasFeatures = [];
     this.RokuHasFeatures = [];
+    this.ChromecastHasFeatures = [];
+    this.AmazonFireHasFeatures = [];
+    this.NvidiaShieldHasFeatures = [];
   }
 
 
   filterChannels(){
     this.selectedChannels.forEach((current, index) => {
 
-      for (let channel of this.allRokuChannels) {
-        if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.RokuHasChannels.push(channel);
-        }
-      }
       for (let channel of this.allAppleTvChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
           this.AppleTvHasChannels.push(channel);
         }
       }
+      for (let channel of this.allRokuChannels) {
+        if (channel.name.toLowerCase() === current.toLowerCase()) {
+          this.RokuHasChannels.push(channel);
+        }
+      }
+
+      for (let channel of this.allChromecastChannels) {
+        if (channel.name.toLowerCase() === current.toLowerCase()) {
+          this.ChromecastHasChannels.push(channel);
+        }
+      }
+
+      for (let channel of this.allAmazonFireChannels) {
+        if (channel.name.toLowerCase() === current.toLowerCase()) {
+          this.AmazonFireHasChannels.push(channel);
+        }
+      }
+
+      for (let channel of this.allNvidiaShieldChannels) {
+        if (channel.name.toLowerCase() === current.toLowerCase()) {
+          this.NvidiaShieldHasChannels.push(channel);
+        }
+      }
+
     })
+
+    if (this.selectedChannels.length > this.AppleTvHasChannels.length) {
+      this.AppleTvHasChannels = [];
+    }
 
     if (this.selectedChannels.length > this.RokuHasChannels.length) {
       this.RokuHasChannels = [];
     }
 
-    if (this.selectedChannels.length > this.AppleTvHasChannels.length) {
-      this.AppleTvHasChannels = [];
+    if (this.selectedChannels.length > this.ChromecastHasChannels.length) {
+      this.ChromecastHasChannels = [];
+    }
+
+    if (this.selectedChannels.length > this.AmazonFireHasChannels.length) {
+      this.AmazonFireHasChannels = [];
+    }
+
+    if (this.selectedChannels.length > this.NvidiaShieldHasChannels.length) {
+      this.NvidiaShieldHasChannels = [];
     }
 
     this.checkIfChannelResults();
@@ -241,6 +280,25 @@ export class DevicesComponent implements OnInit {
                 this.RokuHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
               }
             }
+
+            for (let feature of this.allChromecastFeatures) {
+              if (feature.key === current.key) {
+                this.ChromecastHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+              }
+            }
+
+            for (let feature of this.allAmazonFireFeatures) {
+              if (feature.key === current.key) {
+                this.AmazonFireHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+              }
+            }
+
+            for (let feature of this.allNvidiaShieldFeatures) {
+              if (feature.key === current.key) {
+                this.NvidiaShieldHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+              }
+            }
+
           }
         )
 
@@ -249,35 +307,50 @@ export class DevicesComponent implements OnInit {
           this.AppleTvHasFeatures = [];
         }
 
+        if (this.selectedFeatures.length > this.RokuHasFeatures.length) {
+          this.RokuHasFeatures = [];
+        }
 
-          if (this.selectedFeatures.length > this.RokuHasFeatures.length) {
-            this.RokuHasFeatures = [];
-          }
+        if (this.selectedFeatures.length > this.ChromecastHasFeatures.length) {
+          this.ChromecastHasFeatures = [];
+        }
 
-          this.checkIfFeaturesResults();
+        if (this.selectedFeatures.length > this.AmazonFireHasFeatures.length) {
+          this.AmazonFireHasFeatures = [];
+        }
+
+        if (this.selectedFeatures.length > this.NvidiaShieldHasFeatures.length) {
+          this.NvidiaShieldHasFeatures = [];
+        }
+
+        this.checkIfFeaturesResults();
   }
 
 
 
   checkIfChannelResults() {
     if (this.RokuHasChannels.length === 0
-        && this.AppleTvHasChannels.length === 0) {
+        && this.AppleTvHasChannels.length === 0
+        && this.ChromecastHasChannels.length === 0
+        && this.AmazonFireHasChannels.length === 0
+        && this.NvidiaShieldHasChannels.length === 0) {
       this.noChannelResults = true;
     } else {
       this.noChannelResults = false;
     }
-
   }
 
   checkIfFeaturesResults() {
     if (this.RokuHasFeatures.length === 0
-        && this.AppleTvHasFeatures.length === 0) {
+        && this.AppleTvHasFeatures.length === 0
+        && this.ChromecastHasFeatures.length === 0
+        && this.AmazonFireHasFeatures.length === 0
+        && this.NvidiaShieldHasFeatures.length === 0) {
       this.noFeatureResults = true;
     } else {
       this.noFeatureResults = false;
     }
   }
-
 
 
 onClickDetails() {
