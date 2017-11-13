@@ -1,10 +1,42 @@
 <section class="mode">
 
-          <div class="services">
-            <a [routerLink]="['/services']">Services Wizard</a>
+          <div class="services" routerLinkActive="active">
+            <div class="inner">
+                <a [routerLink]="['/services']"  >
+                <img src="assets/services.png" alt="">
+
+                  <h2>
+                    DirectTV Now<br>
+                    vs<br>
+                    Hulu<br>
+                    vs<br>
+                    Sling TV<br>
+                    vs<br>
+                    Playstation Vue<br>
+                    vs<br>
+                    Fubo TV
+                  </h2>
+                </a>
+            </div>
           </div>
-          <div class="devices">
-            <a [routerLink]="['/devices']">Devices Wizard</a>
+
+          <div class="devices" routerLinkActive="active">
+            <div class="inner">
+                <a [routerLink]="['/devices']">
+                  <img src="assets/services.png" alt="">
+                    <h2>
+                      Apple TV<br>
+                      vs<br>
+                      Roku<br>
+                      vs<br>
+                      Chromecast<br>
+                      vs<br>
+                      Amazon Fire TV<br>
+                      vs<br>
+                      nVidia Shield
+                    </h2>
+                  </a>
+            </div>
           </div>
 
 </section>

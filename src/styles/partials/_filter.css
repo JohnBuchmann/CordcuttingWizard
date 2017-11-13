@@ -6,7 +6,7 @@ section.quickresults {
   background: #212121;
 }
 
-section.channels-and-features {
+section.channels-and-features, section.channels {
   background: white;
 }
 
@@ -20,8 +20,18 @@ section.results {
 
   section.results .card {
     margin-top: 30px;
+    transition: all 0.5s;
+    border: none;
   }
 
+  section.results img.channellogo {
+    width: 30px;
+    height: 30px;
+  }
+
+    section.results .card:hover {
+      transform: scale(1.025);
+    }
 
 
       @media(min-width: 500px) {
@@ -42,14 +52,13 @@ section.results {
 
   .card {
     margin: 0 5px 10px 5px;
-
   }
 
 
 
 
 
-
+/* channel/app logos */
 
 ul.channels {
 margin: 0px;
@@ -59,13 +68,6 @@ margin-bottom: 0px;
 background: #FFFFFF;
 text-align: center;
 }
-
-  /* @media(min-width: 600px) {
-    ul.channels {
-      padding-top: 50px;
-      padding-bottom: 40px;
-    }
-  } */
 
 ul.channels li {
 list-style: none;
@@ -78,7 +80,7 @@ display:none;
 }
 
 ul.channels label {
-background: #000000;
+background: #DCDCDC;
 }
 
 
@@ -93,6 +95,10 @@ border: 5px solid white;
 transition: all .3s;
 cursor: pointer;
 }
+
+input[type=checkbox]:hover + label {
+  transform: scale(1.1);
+  }
 
 input[type=checkbox]:checked + label {
 display:inline-block;
@@ -131,3 +137,56 @@ border: 5px solid #FFA100;
 background: #fe7d00;
 color: white;
 }
+
+
+
+/* device logo, hover, and Amazon button */
+
+.device-logo {
+  position: relative;
+}
+
+  .device-logo__overlay {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s;
+  }
+
+  .device-logo:hover .device-logo__overlay {
+    opacity: 1;
+  }
+
+  .device-logo__overlay__btn,
+  .device-logo__overlay__btn:hover,
+  .amazon-link-mobile,
+  .amazon-link-mobile:hover {
+    text-decoration: none;
+    background: #FE7D00;
+    padding: 10px 20px;
+    color: white;
+  }
+
+    .device-logo__overlay__btn i {
+      font-size: 1.2rem;
+    }
+
+
+.amazon-link-mobile {
+  display: block;
+  margin-bottom: 15px;
+}
+
+  @media(min-width: 991px) {
+    .amazon-link-mobile {
+      display: none;
+    }
+  }
+

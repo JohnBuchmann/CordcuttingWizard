@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Channel } from './../../models/channel.model';
 import { ServicesService } from './../../services/services.service';
 import { identifierModuleUrl } from '@angular/compiler';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { EmailService } from './../../services/email.service';
 
 import { Observable } from 'rxjs/Observable';
@@ -14,10 +15,37 @@ declare var jQuery: any;
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css']
+  styleUrls: ['./services.component.css'],
+  animations: [
+    trigger('collapse', [
+      state('collapsed', style({
+        'height': '0px'
+      })),
+      state('expanded', style({
+        'height': '*'
+      })),
+      transition('collapsed => expanded', animate(300)),
+      transition('expanded => collapsed', animate(300))
+    ]),
+
+    trigger(
+      'animateQuickResults', [
+        transition(':enter', [
+          style({ transform: 'translateX(-100%)', opacity: 0 }),
+          animate('300ms',
+          style({ transform: 'translateX(0)', opacity: 1 }))
+        ]),
+        transition(':leave', [
+          style({ transform: 'translateX(0)', opacity: 1 }),
+          animate('300ms',
+          style({ transform: 'translateX(100%)', opacity: 0 }))
+        ])
+      ]
+    )
+  ]
 })
 export class ServicesComponent implements OnInit {
-
+  state = 'collapsed';
   isCollapsed = true;
   viewDetailsButtonText = 'View Details';
 
@@ -66,6 +94,15 @@ export class ServicesComponent implements OnInit {
 
   ngOnDestroy() {
   }
+
+  // open(content) {
+  //   this.modalService.open(content);
+  // }
+
+  open(content) {
+    this.modalService.open(content);
+  }
+
 
 
   onChannelClick(event, channel: Channel, index) {
@@ -242,6 +279,7 @@ checkIfResults() {
 
 
 onClickDetails() {
+  this.state == 'collapsed' ? this.state = 'expanded' : this.state = 'collapsed';
   this.isCollapsed = !this.isCollapsed;
   if (this.isCollapsed) {
     this.viewDetailsButtonText = 'View Details';
@@ -250,5 +288,9 @@ onClickDetails() {
   }
 
   }
+
+
+
+
 
 }

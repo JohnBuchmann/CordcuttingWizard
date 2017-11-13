@@ -9,6 +9,7 @@ export class DeviceResultsComponent implements OnInit {
   @Input() itemsArray;
   @Input() deviceLogo;
   @Input() deviceName;
+  @Input() amazonUrl;
 
   constructor() { }
 

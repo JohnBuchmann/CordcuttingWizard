@@ -15,6 +15,7 @@ export const NVIDIASHIELD_LOGO = 'assets/nvidiashield.png';
 
 
 var DATA = {
+  // note, Firestore here is probably not used. Code is in environments folder instead
   "firestore": {
     apiKey: "AIzaSyDxSKHqhA4vJhzEGaXM4D9Fv7rKVoshoD8",
     authDomain: "test-ab93c.firebaseapp.com",
@@ -22,6 +23,13 @@ var DATA = {
     projectId: "test-ab93c",
     storageBucket: "test-ab93c.appspot.com",
     messagingSenderId: "993594080145"
+  },
+  "amazonDeviceUrls": {
+    appletv: "https://amazon.com/appleTv",
+    roku: "https://amazon.com/roku",
+    chromecast: "https://amazon.com/chromecast",
+    amazonfire: "https://amazon.com/amazonfire",
+    nvidiashield: "https://amazon.com/nvidiashield"
   }
   // ,
   // "DeviceFeatures": [

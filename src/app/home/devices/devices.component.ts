@@ -6,6 +6,7 @@ import { DevicesService } from './../../services/devices.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs/Observable';
 
+import DATA from './../../config/config';
 import {APPLETV_LOGO, ROKU_LOGO, CHROMECAST_LOGO, AMAZONFIRE_LOGO, NVIDIASHIELD_LOGO } from './../../config/config';
 
 @Component({
@@ -48,6 +49,12 @@ export class DevicesComponent implements OnInit {
   chromecastLogo = CHROMECAST_LOGO;
   amazonfireLogo = AMAZONFIRE_LOGO;
   nvidiashieldLogo = NVIDIASHIELD_LOGO;
+
+  appletvAmazon = DATA.amazonDeviceUrls.amazonfire;
+  rokuAmazon = DATA.amazonDeviceUrls.roku;
+  chromecastAmazon = DATA.amazonDeviceUrls.chromecast;
+  amazonfireAmazon = DATA.amazonDeviceUrls.amazonfire;
+  nvidiashieldAmazon = DATA.amazonDeviceUrls.nvidiashield;
 
 
   whichTab = "channels"; // or "features"
@@ -210,32 +217,47 @@ export class DevicesComponent implements OnInit {
 
       for (let channel of this.allAppleTvChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.AppleTvHasChannels.push(channel);
+          this.AppleTvHasChannels.push({
+            channel,
+            amazon: DATA.amazonDeviceUrls.appletv});
         }
       }
       for (let channel of this.allRokuChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.RokuHasChannels.push(channel);
+          this.RokuHasChannels.push({
+            channel,
+            amazon: DATA.amazonDeviceUrls.roku});
         }
       }
 
       for (let channel of this.allChromecastChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.ChromecastHasChannels.push(channel);
+          this.ChromecastHasChannels.push({
+            channel,
+            amazon: DATA.amazonDeviceUrls.chromecast
+          });
         }
       }
 
       for (let channel of this.allAmazonFireChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.AmazonFireHasChannels.push(channel);
+          this.AmazonFireHasChannels.push({
+            channel,
+            amazon: DATA.amazonDeviceUrls.amazonfire
+          });
         }
       }
 
       for (let channel of this.allNvidiaShieldChannels) {
         if (channel.name.toLowerCase() === current.toLowerCase()) {
-          this.NvidiaShieldHasChannels.push(channel);
+          this.NvidiaShieldHasChannels.push({
+            channel,
+            amazon: DATA.amazonDeviceUrls.nvidiashield
+          });
         }
       }
+
+      console.log(this.AppleTvHasChannels);
 
     })
 
@@ -271,34 +293,53 @@ export class DevicesComponent implements OnInit {
 
             for (let feature of this.allAppleTvFeatures) {
               if (feature.key === current.key) {
-                this.AppleTvHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+                this.AppleTvHasFeatures.push({
+                  key: feature.key,
+                  status: feature.status,
+                  featureName: this.allDeviceFeatures[feature.key - 1].status,
+                  amazon: DATA.amazonDeviceUrls.appletv});
               }
             }
 
             for (let feature of this.allRokuFeatures) {
               if (feature.key === current.key) {
-                this.RokuHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+                this.RokuHasFeatures.push({
+                  key: feature.key,
+                  status: feature.status,
+                  featureName: this.allDeviceFeatures[feature.key - 1].status,
+                  amazon: DATA.amazonDeviceUrls.roku});
               }
             }
 
             for (let feature of this.allChromecastFeatures) {
               if (feature.key === current.key) {
-                this.ChromecastHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+                this.ChromecastHasFeatures.push({
+                  key: feature.key,
+                  status: feature.status,
+                  featureName: this.allDeviceFeatures[feature.key - 1].status,
+                  amazon: DATA.amazonDeviceUrls.chromecast});
               }
             }
 
             for (let feature of this.allAmazonFireFeatures) {
               if (feature.key === current.key) {
-                this.AmazonFireHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+                this.AmazonFireHasFeatures.push({
+                  key: feature.key,
+                  status: feature.status,
+                  featureName: this.allDeviceFeatures[feature.key - 1].status,
+                  amazon: DATA.amazonDeviceUrls.amazonfire});
               }
             }
 
             for (let feature of this.allNvidiaShieldFeatures) {
               if (feature.key === current.key) {
-                this.NvidiaShieldHasFeatures.push({key: feature.key, status: feature.status, featureName: this.allDeviceFeatures[feature.key - 1].status});
+                this.NvidiaShieldHasFeatures.push({
+                  key: feature.key,
+                  status: feature.status,
+                  featureName: this.allDeviceFeatures[feature.key - 1].status,
+                  amazon: DATA.amazonDeviceUrls.nvidiashield});
               }
             }
-
           }
         )
 
