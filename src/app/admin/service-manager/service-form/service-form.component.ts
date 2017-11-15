@@ -10,7 +10,7 @@ import { Message, MessageType } from './../../../models/message.model';
 @Component({
   selector: 'app-service-form',
   templateUrl: './service-form.component.html',
-  styleUrls: ['./service-form.component.css']
+  styleUrls: ['./service-form.component.scss']
 })
 export class ServiceFormComponent implements OnInit {
   myForm: FormGroup;

@@ -15,7 +15,7 @@ declare var jQuery: any;
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css'],
+  styleUrls: ['./services.component.scss'],
   animations: [
     trigger('collapse', [
       state('collapsed', style({

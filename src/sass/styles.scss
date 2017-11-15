@@ -1,0 +1,14 @@
+@import './variables';
+@import './mixins';
+
+@import 'partials/_filter';
+@import 'partials/_forms';
+@import 'partials/_ng-bootstrap';
+@import 'partials/_global';
+
+
+* {
+
+  $accent-color: #FFA100;
+
+}

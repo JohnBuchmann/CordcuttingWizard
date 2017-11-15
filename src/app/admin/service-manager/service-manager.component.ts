@@ -7,7 +7,7 @@ import { Channel } from './../../models/channel.model';
 @Component({
   selector: 'app-manager',
   templateUrl: './service-manager.component.html',
-  styleUrls: ['./service-manager.component.css']
+  styleUrls: ['./service-manager.component.scss']
 })
 export class ServiceManagerComponent implements OnInit {
 

@@ -12,7 +12,7 @@ import {APPLETV_LOGO, ROKU_LOGO, CHROMECAST_LOGO, AMAZONFIRE_LOGO, NVIDIASHIELD_
 @Component({
   selector: 'app-devices',
   templateUrl: './devices.component.html',
-  styleUrls: ['./devices.component.css'],
+  styleUrls: ['./devices.component.scss'],
   animations: [
     trigger('collapse', [
       state('collapsed', style({
