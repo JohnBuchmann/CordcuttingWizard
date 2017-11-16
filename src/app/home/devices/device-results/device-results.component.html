@@ -12,7 +12,7 @@
     <div *ngFor="let item of itemsArray">
 
         <div *ngIf="!item.featureName" class="media">
-            <img class="channellogo mr-2" src='/assets/logos/{{item.channel.name}}.png' alt="">
+            <img class="channellogo" src='/assets/logos/{{item.channel.name}}.png' alt="">
             <div class="media-body">
                 <p *ngIf="item.channel.status === 'Yes'">Comes Standard</p>
                 <p *ngIf="item.channel.status !== 'Yes'">{{ item.status }}</p>

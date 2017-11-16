@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+// import * as $ from 'jquery';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
-
+constructor() {
+  // $('p').css({"color": "red"})
+}
 
 }

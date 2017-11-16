@@ -1,38 +1,32 @@
-<!-- <section class="intro-text">
-    <div class="container">
-        <h2>DirectTV Now <span class="vs">vs</span> Bbbbb <span class="vs">vs</span> Ccccc <span class="vs">vs</span> Dddd <span class="vs">vs</span> Eeee</h2>
-        <p>Which "Live TV" service is right for you? Find out now by choosing the channels you can't live without.</p>
-        <p>Choose the channels that you gotta have, and we will show you which cord cutting services include them.
-          <a (click)="open(content2)">(Disclaimer)</a></p>
+<section class="intro-text">
 
 
-          <ng-template #content2 let-c="close" let-d="dismiss">
-              <div class="modal-header">
-                <h4 class="modal-title">Woah, don't get too excited!</h4>
-                <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>Before buying into one of these cord cutting TV services, always double-check to make sure the channels you need are included. These services can potentially add or remove channels at any time. We do try our best to keep this site up to date, but if you find any errors, please contact us.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Got it!</button>
-              </div>
-            </ng-template>
+            <h2>Which Live TV Streaming service is right for you?</h2>
+
+
+              <p>Find out now by choosing the channels that you can't live without. <a (click)="open(content)">(Disclaimer)</a></p>
 
 
 
-         <div class="allservices">
-            <img class="img-responsive" src="assets/directtv.png">
-            <img class="img-responsive" src="assets/sling.png">
-            <img class="img-responsive" src="assets/vue.png">
-            <img class="img-responsive" src="assets/youtube.png">
-            <img class="img-responsive" src="assets/hulu.png">
-            <img class="img-responsive" src="assets/fubo.png">
+
+
+
+
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title">Woah, don't get too excited!</h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-    </div>
-</section> -->
+        <div class="modal-body">
+          <p>Before buying into one of these cord cutting TV services, always double-check to make sure the channels you need are included. These services can potentially add or remove channels at any time. We do try our best to keep this site up to date, but if you find any errors, please contact us. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Got it!</button>
+        </div>
+      </ng-template>
+  </section>
 
 <section *ngIf="!noResults" class="quickresults" [@animateQuickResults]>
   <div class="container">

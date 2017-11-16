@@ -1,29 +1,29 @@
 <div class="container manager">
 
+<main>
+    <div class="row">
+        <div class="col-lg-4 leftcolumn">
+            <a [routerLink]="['form']" [queryParams]="{mode: 'add'}" class="btn btn-primary">Add Channel</a>
+            <ul class="list-group channels">
+                <li *ngFor="let channel of allChannels2" class="list-group-item justify-content-between">
+                  <div class="logo">
+                      <img class="channellogo" [src]="channel.image">{{ channel.name }}
+                  </div>
+                  <div class="edit">
+                      <i class="fa fa-pencil-square" aria-hidden="true"></i>
+                      <a (click)="onEditChannel(channel._id)">Edit</a>
+                  </div>
+                </li>
+            </ul>
+        </div>
 
 
-  <div class="row">
-    <div class="col-lg-4 leftcolumn">
-        <a [routerLink]="['form']" [queryParams]="{mode: 'add'}" class="btn btn-primary">Add Channel</a>
-        <ul class="list-group channels">
-            <li *ngFor="let channel of allChannels2" class="list-group-item justify-content-between">
-              <div class="logo">
-                  <img class="channellogo" [src]="channel.image">{{ channel.name }}
-              </div>
-              <div class="edit">
-                  <i class="fa fa-pencil-square" aria-hidden="true"></i>
-                  <a (click)="onEditChannel(channel._id)">Edit</a>
-              </div>
-            </li>
-        </ul>
-    </div>
+        <div class="col-lg-8">
+            <router-outlet></router-outlet>
+        </div>
 
-
-    <div class="col-lg-8">
-        <router-outlet></router-outlet>
-    </div>
-
-  </div>
+      </div>
+</main>
 
 
 

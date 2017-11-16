@@ -19,6 +19,7 @@ export class ServiceManagerComponent implements OnInit {
           private route: ActivatedRoute) { }
 
   ngOnInit() {
+        this.servicesService.downloadChannels();
         this.allChannels2 = this.servicesService.getAllChannels();
 
         // this.servicesService.channelsSubject

@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-reporterror',
   templateUrl: './reporterror.component.html',
-  styleUrls: ['./reporterror.component.css']
+  styleUrls: ['./reporterror.component.scss']
 })
 export class ReporterrorComponent implements OnInit {
 

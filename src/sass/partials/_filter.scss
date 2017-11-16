@@ -1,15 +1,11 @@
-// section.channels-and-features, section.channels {
-//   background: white;
-// }
-
 section {
 
   &.intro-text {
-    background: silver;
+    background: $color-offwhite;
   }
 
   &.quickresults {
-    background: #212121;
+    background: $primary-color;
   }
 
   &.channels-and-features, &.channels {
@@ -24,6 +20,7 @@ section {
         transition: all 0.5s;
         border: none;
         width: 250px;
+        text-align: left;
 
         &:hover {
           transform: scale(1.025);
@@ -38,6 +35,7 @@ section {
       img.channellogo {
         width: 30px;
         height: 30px;
+        margin-right: 15px;
       }
   }
 }

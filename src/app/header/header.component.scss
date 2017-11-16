@@ -1,7 +1,37 @@
+@import "~sass/variables";
+
+.container {
+  margin-left: 0;
+  margin-right: 0;
+
+  @media(min-width: $breakpoint-sm) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.collapse {
+  a {color: white;}
+
+  &.show {
+    padding: 30px;
+    background: #EDEDED;
+
+    a {
+      color: black;
+    }
+  }
+}
+
+
 .navbar {
   z-index: 10;
-  top: -60px;
+  top: -100px;
   transition: all 0.5s;
+
+  a {
+    color: white;
+  }
 
   &.navbarHide {
     top: 0px
@@ -24,7 +54,7 @@
 .navbar-brand {
 
   img {
-    height: 40px;
+    height: auto;
     width: auto;
     line-height: 1rem;
   }
