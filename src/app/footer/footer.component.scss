@@ -20,6 +20,16 @@ footer {
     }
   }
 
+  a {
+    color: white;
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+  }
+
 
   .share {
     text-align: right;
