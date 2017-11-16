@@ -9,7 +9,7 @@
     </a>
     <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse justify-content-end" id="exCollapsingNavbar2">
     <div class="navbar-nav">
-    <button class="btn btn-primary" [routerLink]="['/reporterror']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report Error</button>
+    <button class="btn btn-outline-primary" [routerLink]="['/reporterror']"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Report Error</button>
     <a *ngIf="isLoggedIn" class="nav-link" [routerLink]="['/manager']">Manage Channels</a>
     <a *ngIf="isLoggedIn" class="nav-link" [routerLink]="['/device-manager']">Manage Devices</a>
     <a *ngIf="!isLoggedIn" class="nav-link" [routerLink]="['/login']">Login</a>

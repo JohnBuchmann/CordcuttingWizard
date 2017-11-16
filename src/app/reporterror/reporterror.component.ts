@@ -24,7 +24,6 @@ export class ReporterrorComponent implements OnInit {
     this.emailService.sendEmail(form.value.description)
       .subscribe(
         (res) => {
-          console.log(res);
           this.messageService.handleMessage(new Message(
             MessageType.message,
             'Thank You!',
@@ -34,8 +33,8 @@ export class ReporterrorComponent implements OnInit {
         err => (
           this.messageService.handleMessage(new Message(
             MessageType.error,
-            'Error',
-            'There was a problem sending the email. Please try sending an email manually to jsbuchmann@gmail.com. Thank you!'
+            'Oh Crap!',
+            'There was a problem sending the message. Please try sending an email manually to jsbuchmann@gmail.com. Thank you!'
           ))
         )
       )

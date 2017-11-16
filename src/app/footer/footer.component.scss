@@ -1,35 +1,31 @@
 @import "~sass/variables";
 
-.footer {
+footer {
   background: $primary-color;
   color: white;
   padding: 30px 0px;
+  font-size: .9rem;
 
 }
 
 .container {
-  display: flex;
+
+  .angular {
+    display: block;
+    margin-top: 10px;
+
+    img {
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
+
+
+  .share {
+    text-align: right;
+  }
 }
 
-.container .angular {
-  display: block;
-  margin-top: 10px;
-}
-
-.container .angular img {
-  height: 30px;
-  margin-right: 10px;
-}
-
-
-
-.container p, .container div {
-  width: 50%;
-}
-
-.container .share {
-  text-align: right;
-}
 
 .sb-style {
   margin: 0px !important;

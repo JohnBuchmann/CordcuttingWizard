@@ -16,10 +16,12 @@ import { ServiceManagerComponent } from './admin/service-manager/service-manager
 
 
 const routes = [
+    {path: '', redirectTo: '/services', pathMatch: 'full'},
     {path: '', component: HomeComponent, children: [
       {path: 'services', component: ServicesComponent},
       {path: 'devices', component: DevicesComponent}
     ] },
+
     {path: 'reporterror', component: ReporterrorComponent },
     {path: 'manager', component: ServiceManagerComponent, children: [
       {path: 'form', component: ServiceFormComponent }

@@ -10,6 +10,7 @@
   }
 }
 
+// Responsive dropdown
 .collapse {
   a {color: white;}
 
@@ -59,4 +60,20 @@
     line-height: 1rem;
   }
 
+}
+
+button {
+  border-color: white;
+  color: white;
+  margin-right: 20px;
+
+  &:hover {
+    background: $accent-color;
+    color: white;
+    border: 1px solid $accent-color;
+  }
+
+  &:focus {
+    box-shadow: none !important;
+  }
 }

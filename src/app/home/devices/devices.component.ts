@@ -1,4 +1,3 @@
-import { CURRENT_PLATFORM } from 'preboot/test/e2e/e2e.app';
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Device } from './../../models/device.model';

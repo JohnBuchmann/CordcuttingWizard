@@ -73,28 +73,28 @@ section {
 
 /* channel/app logos */
 
-ul.channels {
+.channels {
 margin: 0px;
-padding-top: 10px;
-padding-bottom: 0px;
+padding: 10px 0 0 0;
 margin-bottom: 0px;
 background: #FFFFFF;
 text-align: center;
+
+  li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  input[type=checkbox] {
+    display:none;
+    }
+
+  label {
+    background: #DCDCDC;
+    }
 }
 
-ul.channels li {
-list-style: none;
-display: inline-block;
-margin-right: 10px;
-}
-
-ul.channels input[type=checkbox] {
-display:none;
-}
-
-ul.channels label {
-background: #DCDCDC;
-}
 
 
 

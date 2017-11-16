@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareButton, ShareProvider } from 'ngx-sharebuttons';
+
 
 @Component({
   selector: 'app-footer',
@@ -7,8 +7,6 @@ import { ShareButton, ShareProvider } from 'ngx-sharebuttons';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-
-  fbButton: ShareButton;
 
   constructor() { }
 
